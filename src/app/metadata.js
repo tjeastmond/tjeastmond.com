@@ -1,0 +1,52 @@
+export default {
+  title: "TJ Eastmond",
+  description: "TJ Eastmond - Senior Software Leader and Engineer. Expert Data Engineering, Python, Node.js",
+  applicationName: "tjeastmond.com",
+  keywords: [
+    "Data",
+    "Data Engineer",
+    "Engineering Manager",
+    "dbt",
+    "Postgres",
+    "MySQL",
+    "Node.js",
+    "Python",
+    "JavaScript",
+    "Golang",
+    "Go",
+    "MongoDB",
+    "Spiteshow",
+    "TJ Eastmond",
+    "TJ",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: [
+      { type: "image/png", sizes: "16x16", url: "/images/icons/favicon-16x16.png" },
+      { type: "image/png", sizes: "32x32", url: "/images/icons/favicon-32x32.png" },
+    ],
+    shortcut: ["/images/icons/favicon.ico"],
+    apple: [{ url: "/images/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    other: [
+      { rel: "mask-icon", url: "/images/icons/safari-pinned-tab.svg", color: "#da532c" },
+      { rel: "manifest", url: "/images/icons/site.webmanifest" },
+    ],
+    themeColor: "#ededed",
+  },
+  appleWebApp: {
+    title: "TJ Eastmond",
+    statusBarStyle: "black-translucent",
+  },
+};
