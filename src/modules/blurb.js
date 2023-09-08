@@ -7,8 +7,8 @@ export default function Blurb() {
           I like to build new products for clients at <a href="#">Studio Eriksson</a>.
         </h1> */}
         <h1>
-          You've found the home of TJ Eastmond. I live on the Jersey Shore, and I'm a Senior Engineering Manager. I
-          build and manage awesome engineering teams.
+          Welcome to my site, I'm <a href="#">TJ Eastmond</a>. I live on the Jersey Shore, and I'm a Senior Engineering
+          Manager. I build and manage awesome engineering teams and love data.
         </h1>
       </div>
     </div>
