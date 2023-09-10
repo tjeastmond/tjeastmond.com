@@ -4,8 +4,10 @@ export default function Skills() {
       <div className="four columns" style={{ marginLeft: 0, marginBottom: "5rem" }}>
         <h2>Skills &amp; Experience</h2>
         <div className="eight columns subhead">
-          Massa curae fringilla porttitor quam sollicitudin iaculis aptent leo ligula euismod dictumst, orci penatibus
-          mauris eros etiam.
+          <p>
+            I enjoy my career, and have picked up a good bit of experience. Here are some skills I'm particularly proud
+            of.
+          </p>
         </div>
       </div>
       <div className="four columns">
