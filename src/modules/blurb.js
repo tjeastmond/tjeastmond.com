@@ -3,8 +3,12 @@ export default function Blurb() {
     <div className="row headline">
       <div className="nine columns">
         <h1>
-          Welcome, I'm <a href="#">TJ Eastmond</a>. A Husband, Father, Software Engineer and Manager. I build and manage
-          awesome Engineering teams, and love data.
+          Welcome. I'm
+          <a href="https://www.linkedin.com/in/tjeastmond/" rel="noopener noreferrer" target="_blank">
+            TJ Eastmond
+          </a>
+          , a husband, father, software engineer, and manager. I build and manage awesome engineering teams and data
+          solutions.
         </h1>
       </div>
     </div>
