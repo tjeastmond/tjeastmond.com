@@ -14,7 +14,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head></head>
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        {children}
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "9a7409066ab148eba93e336140ccef57"}'
+        ></script>
+      </body>
     </html>
   );
 }
