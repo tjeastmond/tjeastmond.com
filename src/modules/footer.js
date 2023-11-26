@@ -1,8 +1,8 @@
-import Copyright from './copyright';
+import Copyright from "./copyright";
 
 export default function Footer() {
   return (
-    <div className="row" style={{ marginTop: '5rem' }}>
+    <div className="row" style={{ marginTop: "0rem" }}>
       <hr className="footer-style" />
       <div className="footer">
         <ul className="icons">
