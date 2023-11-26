@@ -45,8 +45,4 @@ export default {
     ],
     themeColor: "#ededed",
   },
-  // appleWebApp: {
-  //   title: "TJ Eastmond",
-  //   statusBarStyle: "black-translucent",
-  // },
 };
