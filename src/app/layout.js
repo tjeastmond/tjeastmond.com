@@ -1,11 +1,11 @@
-import "@/css/tj.style.css";
+import "@/css/static.css";
 import meta from "@/app/metadata";
-import { Nunito_Sans } from "next/font/google";
+import { Source_Code_Pro } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
-const font = Nunito_Sans({
+const font = Source_Code_Pro({
   subsets: ["latin"],
-  weight: ["300", "400", "600"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export const metadata = meta;

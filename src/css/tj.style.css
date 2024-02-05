@@ -9,6 +9,7 @@
 */
 
 @import "all.min.css";
+@import "background.css";
 @import "tj.grid.css";
 @import "normalize.css";
 /* @import "https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600"; */
@@ -43,7 +44,14 @@ body {
   /* color: #989898; */
   color: #514f4e;
   line-height: 1.7;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
+  background: #111;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {

@@ -2,8 +2,7 @@ import Copyright from "./copyright";
 
 export default function Footer() {
   return (
-    <div className="row" style={{ marginTop: "0rem" }}>
-      <hr className="footer-style" />
+    <div style={{ marginTop: "0rem" }}>
       <div className="footer">
         <ul className="icons">
           <li>
@@ -48,7 +47,7 @@ export default function Footer() {
           </li>
           <li>
             <a
-              href="https://twitter.com/cultleaderio"
+              href="https://twitter.com/tjeastmond22"
               className="fa-brands icon fa-x-twitter"
               rel="noopener noreferrer"
               target="_blank"
