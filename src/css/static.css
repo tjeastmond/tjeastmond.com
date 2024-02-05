@@ -113,8 +113,12 @@ body {
     max-width: 100%;
   }
 
-  .logo_text {
-    margin-bottom: 4.0rem;
-    margin-top: 2.0rem;
+  .content {
+    font-size: 1.5rem;
+    text-align: justify;
   }
+
+  /* .logo_text {
+    margin-top: 10.0rem;
+  } */
 }
