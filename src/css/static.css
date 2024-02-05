@@ -1,0 +1,120 @@
+@import "all.min.css";
+@import "normalize.css";
+@import "static_base.css";
+@import "background.css";
+
+body {
+  color: #999;
+  height: 100vh;
+  margin: 0;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  background-image: url("/images/logo.svg");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 75px 75px;
+  height: 75px;
+  margin-bottom: 8%;
+}
+
+.logo_text {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 2.0rem;
+  color: #ccc;
+}
+
+.container {
+  margin: auto;
+  max-width: 500px;
+}
+
+.content {
+  font-size: 1.7rem;
+}
+
+.cipher {
+  text-decoration: none;
+}
+
+.footer {
+  height: 33px;
+  margin: 0 0 10em 0;
+  font-size: 1em;
+  color: #514f4e;
+}
+
+.footer a {
+  color: #514f4e;
+  border: 0;
+}
+
+.footer a:hover {
+  opacity: 0.5;
+  border: 0;
+}
+
+.footer .copyright {
+  font-size: 0.8em;
+  color: #514f4e;
+  margin: 0.25em 0 0 0;
+  padding: 0 0 4em 0;
+  list-style: none;
+}
+
+.footer .icon {
+  text-decoration: none;
+  border-bottom: none;
+  position: relative;
+}
+
+.footer .icon:before {
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: normal;
+  text-transform: none !important;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.footer .icon>.label {
+  display: none;
+}
+
+.footer ul.icons {
+  cursor: default;
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer ul.icons li {
+  display: inline-block;
+  padding: 0 1em 0 0;
+}
+
+.footer ul.icons li:last-child {
+  padding-right: 0;
+}
+
+.footer ul.icons li .icon:before {
+  font-size: 1.4em;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin: 2rem;
+    max-width: 100%;
+  }
+
+  .logo_text {
+    margin-bottom: 4.0rem;
+    margin-top: 2.0rem;
+  }
+}
