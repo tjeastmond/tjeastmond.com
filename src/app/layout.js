@@ -2,6 +2,7 @@ import "@styles/hack.css";
 import meta from "@app/metadata";
 import { Source_Code_Pro } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const font = Source_Code_Pro({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       <body className={font.className}>
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
