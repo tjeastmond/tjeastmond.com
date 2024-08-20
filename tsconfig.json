@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@app/*": ["src/app/*"],
+      "@components/*": ["src/components/*"],
       "@modules/*": ["src/modules/*"],
       "@styles/*": ["src/css/*"],
       "@webfonts/*": ["src/webfonts/*"]
