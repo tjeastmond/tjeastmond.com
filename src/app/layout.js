@@ -1,5 +1,5 @@
-import "@/css/static.css";
-import meta from "@/app/metadata";
+import "@styles/hack.css";
+import meta from "@app/metadata";
 import { Source_Code_Pro } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
