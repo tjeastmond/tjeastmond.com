@@ -1,33 +1,5 @@
-/*
-background color: #22242C, #22242b, #1d1e22 (last one)
-grey: #5E5E5E
-white: FFFCF7
-light blue: #A8C7FA
-blue: #3066BE
-gold: #feb454
-*/
-
-/* prettier-ignore */
-figure, article, aside, details, figcaption, footer, header,
-hgroup, menu, nav, section, table, legend, label, form, fieldset,
-ul, ol, dl, i, b, strong, q, em, a, pre, blockquote, p, h6, h5,
-h4, h3, h2, h1, div, span, applet, object, iframe, abbr, acronym,
-address, big, cite, code, del, dfn, img, ins, kbd, s, samp, small,
-strike, sub, sup, tt, var, u, center, dt, dd, li, caption, tbody,
-tfoot, thead, tr, th, td, canvas, embed, output, ruby, summary,
-time, mark, audio, video, body, html {
-  border: 0;
-  font-size: 1.6em;
-  font: inherit;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-/* prettier-ignore */
-p, h6, h5, h4, h2 {
-  margin: 0 0 2.5rem;
-}
+@import "reset.css";
+@import "all.min.css";
 
 html {
   font-size: 62.5%;
@@ -39,8 +11,6 @@ body {
   font-weight: 300;
   line-height: 1.7;
 }
-
-/* end reset */
 
 body {
   background-color: #1d1e22;
@@ -61,24 +31,10 @@ body {
 
 .main-content {
   width: 100%;
-  max-width: 900px; /* Maximum width for smaller screens */
-  /* background-color: #fffcf7; */
+  max-width: 900px;
   padding: 20px;
-  border-radius: 8px; /* Optional, remove if you prefer no rounded corners */
+  border-radius: 8px;
   box-sizing: border-box;
-}
-
-/* Media Queries */
-@media (min-width: 600px) {
-  .main-content {
-    width: 50%; /* Adjust width for tablets */
-  }
-}
-
-@media (min-width: 1024px) {
-  .main-content {
-    width: 33%; /* Adjust width for larger screens */
-  }
 }
 
 h1 {
@@ -90,17 +46,42 @@ h1 {
 }
 
 .social-media {
+  display: flex;
+  list-style: none;
+  padding: 0;
   margin-top: 20px;
+}
+
+.social-media li {
+  margin-right: 20px;
 }
 
 .social-icon {
   display: inline-block;
-  margin-right: 10px;
-  color: #5e5e5e; /* Grey color for icons */
+  color: #5e5e5e;
   font-size: 24px;
   text-decoration: none;
 }
 
 .social-icon:hover {
-  color: #a8c7fa; /* Light blue color on hover */
+  color: #a8c7fa;
+}
+
+.social-icon .label {
+  display: none;
+}
+
+/* Media Queries */
+@media (min-width: 600px) {
+  /* Adjust for tablets */
+  .main-content {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Adjust for larger screens */
+  .main-content {
+    width: 33%;
+  }
 }
