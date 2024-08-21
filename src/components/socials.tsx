@@ -4,7 +4,7 @@ const socials = [
   { icon: "fa-medium-m", label: "Medium", link: "https://medium.com/@spiteshow" },
   { icon: "fa-steam", label: "Steam", link: "https://steamcommunity.com/id/spiteshow" },
   { icon: "fa-threads", label: "Threads", link: "https://www.threads.net/@tjeastmond" },
-  { icon: "fa-x-twitter", label: "GitHub", link: "https://github.com/tjeastmond" },
+  { icon: "fa-x-twitter", label: "GitHub", link: "https://x.com/tjeastmond22" },
 ];
 
 export default function Socials() {
