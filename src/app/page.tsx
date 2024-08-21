@@ -1,11 +1,11 @@
 import Socials from "@components/socials";
-import Logo from "@components/logo";
+import Title from "@components/title";
 
 export default function Home() {
   return (
     <div className="container">
       <div className="main-content">
-        <Logo />
+        <Title />
         <p>This is some sample text to show the layout.</p>
         <Socials />
       </div>
