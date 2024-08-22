@@ -33,7 +33,6 @@ body {
   width: 100%;
   max-width: 900px;
   padding: 20px;
-  border-radius: 8px;
   box-sizing: border-box;
 }
 
@@ -64,8 +63,11 @@ a.title {
 .social-icon {
   display: inline-block;
   color: #5e5e5e;
-  font-size: 24px;
+  font-size: 28px;
   text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .social-icon:hover {
