@@ -30,10 +30,14 @@ body {
 }
 
 .main-content {
-  width: 100%;
+  box-sizing: border-box;
   max-width: 900px;
   padding: 20px;
-  box-sizing: border-box;
+  width: 100%;
+}
+
+.main-content p {
+  font-size: 90%;
 }
 
 h1 {
@@ -42,6 +46,11 @@ h1 {
   margin: 0 0 1rem;
   font-size: 2.8rem;
   line-height: 1.3;
+}
+
+a {
+  color: #a8c7fa;
+  text-decoration: none;
 }
 
 a.title {
@@ -90,5 +99,10 @@ a.title {
   /* Adjust for larger screens */
   .main-content {
     width: 33%;
+  }
+
+  .container {
+    justify-content: left;
+    align-items: center;
   }
 }
