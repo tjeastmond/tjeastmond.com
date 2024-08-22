@@ -1,6 +1,6 @@
 export default {
   title: "TJ Eastmond",
-  description: "TJ Eastmond - Senior Software Leader and Engineer. Expert Data Engineering, Python, Node.js",
+  description: "TJ Eastmond - Girl Dad, Gamer, Cult Leader, Data Engineer, and Software Engineer",
   applicationName: "tjeastmond.com",
   keywords: [
     "AI",
@@ -34,6 +34,10 @@ export default {
     "T.J.",
     "TJ Eastmond",
     "TJ",
+    "Girl Dad",
+    "Gamer",
+    "Marvel SNAP",
+    "SNAP",
   ],
   robots: {
     index: true,

@@ -1,0 +1,21 @@
+/* prettier-ignore */
+figure, article, aside, details, figcaption, footer, header,
+hgroup, menu, nav, section, table, legend, label, form, fieldset,
+ul, ol, dl, i, b, strong, q, em, a, pre, blockquote, p, h6, h5,
+h4, h3, h2, h1, div, span, applet, object, iframe, abbr, acronym,
+address, big, cite, code, del, dfn, img, ins, kbd, s, samp, small,
+strike, sub, sup, tt, var, u, center, dt, dd, li, caption, tbody,
+tfoot, thead, tr, th, td, canvas, embed, output, ruby, summary,
+time, mark, audio, video, body, html {
+  border: 0;
+  font-size: 1.6em;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+/* prettier-ignore */
+p, h6, h5, h4, h2 {
+  margin: 0 0 2.5rem;
+}
