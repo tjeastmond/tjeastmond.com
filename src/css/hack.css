@@ -98,7 +98,7 @@ a.title {
 @media (min-width: 1024px) {
   /* Adjust for larger screens */
   .main-content {
-    width: 33%;
+    max-width: 800px;
   }
 
   .container {
