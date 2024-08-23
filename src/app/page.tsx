@@ -8,8 +8,8 @@ export default function Home() {
       <div className="main-content">
         <Title />
         <p>
-          You've stumbled upon the homepage of TJ Eastmond: a Girl Dad, Husband, Gamer, Marvel SNAP
-          player, Engineering Managers, and Software and Data Engineer.
+          You've stumbled upon the homepage of TJ Eastmond: Girl Dad, Husband, Gamer, Marvel SNAP
+          player, Engineering Manager, Software Engineer, and Data Engineer.
         </p>
         <p>
           Shoot me an <Link url="mailto:tj.eastmond@gmail.com" text="email" />.
