@@ -1,6 +1,9 @@
-export default {
+import type { Metadata } from "next";
+
+const metadata: Metadata = {
   title: "TJ Eastmond",
-  description: "TJ Eastmond - Girl Dad, Gamer, Cult Leader, Data Engineer, and Software Engineer",
+  description:
+    "TJ Eastmond - Girl Dad, Husband, Gamer, Cult Leader, Data Engineer, and Software Engineer",
   applicationName: "tjeastmond.com",
   keywords: [
     "AI",
@@ -40,7 +43,7 @@ export default {
     "SNAP",
   ],
   robots: {
-    index: true,
+    index: false,
     follow: true,
     nocache: true,
     googleBot: {
@@ -63,6 +66,11 @@ export default {
       { rel: "mask-icon", url: "/images/icons/safari-pinned-tab.svg", color: "#da532c" },
       { rel: "manifest", url: "/images/icons/site.webmanifest" },
     ],
-    themeColor: "#ededed",
+  },
+  appleWebApp: {
+    statusBarStyle: "black-translucent",
+    title: "tjeastmond.com",
   },
 };
+
+export default metadata;
