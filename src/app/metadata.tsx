@@ -69,7 +69,6 @@ const metadata: Metadata = {
   },
   appleWebApp: {
     statusBarStyle: "black-translucent",
-    title: "tjeastmond.com",
   },
 };
 

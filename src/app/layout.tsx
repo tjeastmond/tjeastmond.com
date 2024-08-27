@@ -2,8 +2,8 @@ import "@styles/hack.css";
 import meta from "@app/metadata";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Viewport } from "next";
 import { Source_Code_Pro } from "next/font/google";
+import { Viewport } from "next";
 
 export const viewport: Viewport = {
   themeColor: "#fffcf7",
