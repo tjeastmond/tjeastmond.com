@@ -6,7 +6,7 @@ import { Source_Code_Pro } from "next/font/google";
 import { Viewport } from "next";
 
 export const viewport: Viewport = {
-  themeColor: "#fffcf7",
+  themeColor: "#1d1e22",
 };
 
 const font = Source_Code_Pro({
