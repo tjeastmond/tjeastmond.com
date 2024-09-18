@@ -1,4 +1,18 @@
-import { DefaultOptions, OptionalOptions, ScrableOptions } from "./types";
+export interface ScrableOptions {
+  characters: string[];
+  changes: number;
+  sfps: number;
+  speed: number;
+}
+
+export type OptionalOptions = Partial<ScrableOptions>;
+
+export const DefaultOptions: ScrableOptions = {
+  characters: "!#_-*0+^.".split(""),
+  changes: 3,
+  sfps: 6,
+  speed: 100,
+};
 
 export default class ScrambleText {
   private ready: boolean = false;
@@ -13,7 +27,9 @@ export default class ScrambleText {
     private element: HTMLElement | null,
     options?: OptionalOptions,
   ) {
-    if (!this.element || !this.element.textContent) throw new Error("Element not found");
+    if (!this.element || !this.element.textContent) {
+      throw new Error("Element not found");
+    }
     this.config = { ...DefaultOptions, ...options };
     this.originalText = this.element.textContent;
     this.initializeValidIndexes();
@@ -33,14 +49,15 @@ export default class ScrambleText {
   }
 
   private getRandomChar(): string {
-    return this.config.characters[Math.floor(Math.random() * this.config.characters.length)];
+    return this.config.characters[
+      Math.floor(Math.random() * this.config.characters.length)
+    ];
   }
 
   private setTextContent(index: number, char: string): void {
+    const text = this.element!.textContent!;
     this.element!.textContent =
-      this.element!.textContent!.substring(0, index) +
-      char +
-      this.element!.textContent!.substring(index + 1);
+      text.substring(0, index) + char + text.substring(index + 1);
   }
 
   private animateScrambling(): void {

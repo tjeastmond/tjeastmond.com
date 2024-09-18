@@ -1,8 +1,13 @@
 "use client";
 
-import React, { useEffect, useRef, useState, forwardRef } from "react";
-import ScrambleText from "./scrambler/scrambler";
-import { OptionalOptions } from "./scrambler/types";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  forwardRef,
+  useCallback,
+} from "react";
+import ScrambleText, { OptionalOptions } from "./scrambler/scrambler";
 
 // Use types instead of interfaces to allow proper extension
 type ScrambleTextProps<T extends keyof JSX.IntrinsicElements> = {
@@ -30,13 +35,13 @@ export default function Scrambler<T extends keyof JSX.IntrinsicElements>({
   const elementRef = useRef<HTMLElement>(null);
   const [scrambler, setScrambler] = useState<ScrambleText | null>(null);
 
-  const start = () => {
-    if (scrambler) scrambler.start();
-  };
+  const start = useCallback(() => {
+    scrambler?.start();
+  }, [scrambler]);
 
-  const restoreNow = () => {
-    if (scrambler) scrambler.restoreNow();
-  };
+  const restoreNow = useCallback(() => {
+    scrambler?.restoreNow();
+  }, [scrambler]);
 
   useEffect(() => {
     if (elementRef.current) {
