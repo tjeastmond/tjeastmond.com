@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  forwardRef,
-  useCallback,
-} from "react";
+import React, { forwardRef, JSX, useCallback, useEffect, useRef, useState } from "react";
 import ScrambleText, { OptionalOptions } from "./scrambler/scrambler";
 
 // Use types instead of interfaces to allow proper extension
