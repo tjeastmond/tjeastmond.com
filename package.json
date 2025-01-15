@@ -8,20 +8,20 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "update": "npm run update:next && npm run update:ts",
-    "update:next": "npm i next@latest react@latest react-dom@latest",
-    "update:ts": "npm i --save-dev @types/react@latest @types/react-dom@latest"
+    "update": "pnpm run update:next && pnpm run update:ts",
+    "update:next": "pnpm add next@latest react@latest react-dom@latest",
+    "update:ts": "pnpm add -D @types/react@latest @types/react-dom@latest"
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
     "next": "^15.1.4",
-    "posthog-js": "^1.206.0",
+    "posthog-js": "^1.206.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.13",
+    "@types/jest": "^29.5.14",
     "@types/node": "22.4.1",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
