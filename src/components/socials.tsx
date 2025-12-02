@@ -18,7 +18,13 @@ export default function Socials() {
   );
 }
 
-function Social({ icon, label, link }) {
+interface SocialProps {
+  icon: string;
+  label: string;
+  link: string;
+}
+
+function Social({ icon, label, link }: SocialProps) {
   const style = `fab social-icon ${icon}`;
   return (
     <li>

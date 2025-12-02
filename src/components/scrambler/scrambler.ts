@@ -22,6 +22,7 @@ export default class ScrambleText {
   private config: ScrableOptions;
   private scrambledIndexes = new Set<number>();
   private scrambleCounts = {} as { [key: number]: number };
+  private frameId: number | null = null;
 
   constructor(
     private element: HTMLElement | null,
@@ -45,7 +46,12 @@ export default class ScrambleText {
   }
 
   private shuffleArray<T>(array: T[]): T[] {
-    return array.sort(() => Math.random() - 0.5);
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
   }
 
   private getRandomChar(): string {
@@ -64,7 +70,10 @@ export default class ScrambleText {
     let frameCount = 0;
 
     const animateFrame = () => {
-      if (!this.isScrambling) return;
+      if (!this.isScrambling) {
+        this.frameId = null;
+        return;
+      }
 
       frameCount++;
       if (frameCount % this.config.sfps === 0) {
@@ -79,10 +88,10 @@ export default class ScrambleText {
         }
       }
 
-      requestAnimationFrame(animateFrame);
+      this.frameId = requestAnimationFrame(animateFrame);
     };
 
-    requestAnimationFrame(animateFrame);
+    this.frameId = requestAnimationFrame(animateFrame);
   }
 
   restoreCharacter(idx: number): void {
@@ -117,6 +126,14 @@ export default class ScrambleText {
 
   done(): void {
     this.isScrambling = false;
+  }
+
+  cleanup(): void {
+    if (this.frameId !== null) {
+      cancelAnimationFrame(this.frameId);
+      this.frameId = null;
+    }
+    this.restoreNow();
   }
 }
 

@@ -37,31 +37,40 @@ export default function Scrambler<T extends keyof JSX.IntrinsicElements>({
     scrambler?.restoreNow();
   }, [scrambler]);
 
+  // Use JSON.stringify to compare options and prevent unnecessary re-instantiation
+  const optionsKey = JSON.stringify(options);
+
   useEffect(() => {
     if (elementRef.current) {
       const scramblerInstance = new ScrambleText(elementRef.current, options);
       setScrambler(scramblerInstance);
     }
-  }, [options]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [optionsKey]);
 
   useEffect(() => {
     if (scrambler) scrambler.start();
     return () => {
-      if (scrambler) scrambler.restoreNow();
+      if (scrambler) scrambler.cleanup();
     };
-  }, [scrambler, children]);
+  }, [scrambler]);
 
   useEffect(() => {
     if (!useHover) return;
-    if (scrambler) {
-      elementRef.current?.addEventListener("mouseenter", start);
-      elementRef.current?.addEventListener("mouseleave", restoreNow);
+    const element = elementRef.current;
+
+    if (scrambler && element) {
+      element.addEventListener("mouseenter", start);
+      element.addEventListener("mouseleave", restoreNow);
     }
+
     return () => {
-      elementRef.current?.removeEventListener("mouseenter", start);
-      elementRef.current?.removeEventListener("mouseleave", restoreNow);
+      if (element) {
+        element.removeEventListener("mouseenter", start);
+        element.removeEventListener("mouseleave", restoreNow);
+      }
     };
-  }, [scrambler, children]);
+  }, [scrambler, useHover, start, restoreNow]);
 
   return (
     <WrapperComponent as={as} {...props} ref={elementRef}>
