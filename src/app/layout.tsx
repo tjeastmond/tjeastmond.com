@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Viewport } from "next";
 import { Source_Code_Pro } from "next/font/google";
-import CSPostHogProvider from "./posthog";
 
 export const viewport: Viewport = {
   themeColor: "#1d1e22",
@@ -22,7 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head></head>
       <body className={font.className}>
-        <CSPostHogProvider>{children}</CSPostHogProvider>
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>
