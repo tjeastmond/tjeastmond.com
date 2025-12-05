@@ -4,7 +4,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 ## Project Overview
 
-Personal website for TJ Eastmond built with Next.js 15, React 19, and TypeScript. The site features a custom text scrambling animation effect and is deployed on Vercel with analytics integration.
+Personal website for TJ Eastmond built with Next.js 15.1, React 19, and TypeScript. The site features a custom text scrambling animation effect and is deployed on Vercel with analytics integration.
 
 ## Development Commands
 
@@ -46,12 +46,10 @@ src/
 ├── app/                    # Next.js App Router
 │   ├── layout.tsx         # Root layout with font config, analytics
 │   ├── page.tsx           # Homepage
-│   ├── metadata.tsx       # SEO metadata configuration
-│   └── posthog.tsx        # PostHog analytics provider
+│   └── metadata.tsx       # SEO metadata configuration
 ├── components/            # React components
 │   ├── scrambler/         # Text scrambling animation library
-│   │   ├── scrambler.ts   # Core scramble logic (class-based)
-│   │   ├── types.ts       # TypeScript interfaces
+│   │   ├── scrambler.ts   # Core scramble logic (class-based with types)
 │   │   └── scrambler.spec.ts  # Jest tests
 │   ├── scramblerText.tsx  # React wrapper for scrambler
 │   ├── title.tsx          # Animated site title
@@ -78,22 +76,22 @@ Always use these aliases when importing files from these directories.
 
 **Next.js Configuration:**
 - App Router (not Pages Router)
-- Turbo mode enabled for dev server
+- Turbo mode enabled for dev server on port 3000
 - `poweredByHeader: false` for security
+- Configuration file: `next.config.ts` (TypeScript)
 - TypeScript with `strict: false` mode
 
 **Scrambler Animation System:**
 The centerpiece of the site is a custom text scrambling effect:
-- `scrambler.ts`: Pure TypeScript class handling character-by-character animation
+- `scrambler.ts`: Pure TypeScript class handling character-by-character animation (types defined inline, no separate types.ts file)
 - `scramblerText.tsx`: React wrapper using hooks (useRef, useEffect, useCallback) and forwardRef
 - Supports hover-triggered animations via `useHover` prop
 - Configurable characters, speed, changes count, and frame rate
 - Uses `requestAnimationFrame` for smooth 60fps animations
 
 **Analytics & Monitoring:**
-- Vercel Analytics (`@vercel/analytics`)
-- Vercel Speed Insights (`@vercel/speed-insights`)
-- PostHog analytics with client-side provider
+- Vercel Analytics (`@vercel/analytics` v1.4.1)
+- Vercel Speed Insights (`@vercel/speed-insights` v1.1.0)
 
 **Styling:**
 - Global CSS imported in layout (`@styles/hack.css`)
