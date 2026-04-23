@@ -1,9 +1,8 @@
-import Scrambler from "@components/scramblerText";
+export type LinkProps = {
+  url: string;
+  text: string;
+};
 
-export default function Link({ url, text }) {
-  return (
-    <Scrambler href={url} as="a" useHover={true}>
-      {text}
-    </Scrambler>
-  );
+export default function Link({ url, text }: LinkProps) {
+  return <a href={url}>{text}</a>;
 }

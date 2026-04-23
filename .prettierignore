@@ -1,3 +1,6 @@
+# Minified / vendor styles
+**/*.min.css
+
 # Ignore node_modules directory (third-party dependencies)
 node_modules
 .npm
@@ -19,9 +22,10 @@ build/**
 .env.production
 .env.*.local
 
-# Ignore lock files (if you don't want Prettier to format them)
+# Lockfiles
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
 
 # Ignore coverage reports
 coverage
@@ -37,9 +41,6 @@ public
 
 # Ignore markdown files (if you don't want them formatted)
 *.md
-
-# Ignore JSON files (optional, if you don't want them formatted)
-*.json
 
 # Ignore all files in a specific directory (e.g., assets)
 assets/

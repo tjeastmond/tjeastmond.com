@@ -1,36 +1,31 @@
-// prettier-ignore
-const socials = [
-  { icon: "fa-github-alt", label: "GitHub", link: "https://github.com/tjeastmond" },
-  { icon: "fa-linkedin-in", label: "LinkedIn", link: "https://www.linkedin.com/in/tjeastmond/" },
-  // { icon: "fa-medium-m", label: "Medium", link: "https://medium.com/@spiteshow" },
-  { icon: "fa-steam", label: "Steam", link: "https://steamcommunity.com/id/spiteshow" },
-  // { icon: "fa-threads", label: "Threads", link: "https://www.threads.net/@tjeastmond" },
-  { icon: "fa-bluesky", label: "Bluesky", link: "https://bsky.app/profile/tjeastmond.bsky.social" },
+import type { ComponentType, SVGProps } from "react";
+import { Bird, Gamepad2, Github, Globe, Linkedin } from "lucide-react";
+
+// was fab: fa-github-alt, fa-linkedin-in, fa-steam, fa-bluesky
+
+type LucideIcon = ComponentType<SVGProps<SVGSVGElement>>;
+
+type Item = { label: string; link: string; icon: LucideIcon };
+
+const socials: Item[] = [
+  { label: "GitHub", link: "https://github.com/tjeastmond", icon: Github },
+  { label: "LinkedIn", link: "https://www.linkedin.com/in/tjeastmond/", icon: Linkedin },
+  { label: "Steam", link: "https://steamcommunity.com/id/spiteshow", icon: Gamepad2 },
+  { label: "Bluesky", link: "https://bsky.app/profile/tjeastmond.bsky.social", icon: Bird },
+  { label: "Swoo.io", link: "https://swoo.io", icon: Globe },
 ];
 
 export default function Socials() {
   return (
     <ul className="social-media">
-      {socials.map((social, i) => (
-        <Social key={i} {...social} />
+      {socials.map(({ label, link, icon: Icon }) => (
+        <li key={label}>
+          <a className="social-icon" href={link} rel="noopener noreferrer" target="_blank" aria-label={label}>
+            <span className="label">{label}</span>
+            <Icon className="social-icon-lucide" aria-hidden focusable="false" />
+          </a>
+        </li>
       ))}
     </ul>
-  );
-}
-
-interface SocialProps {
-  icon: string;
-  label: string;
-  link: string;
-}
-
-function Social({ icon, label, link }: SocialProps) {
-  const style = `fab social-icon ${icon}`;
-  return (
-    <li>
-      <a href={link} className={style} rel="noopener noreferrer" target="_blank">
-        <span className="label">{label}</span>
-      </a>
-    </li>
   );
 }
