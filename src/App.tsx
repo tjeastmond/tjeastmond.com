@@ -4,7 +4,7 @@ import Link from "@components/link";
 import LiteModeToggle from "@components/LiteModeToggle";
 import Socials from "@components/socials";
 import Title from "@components/title";
-import "@styles/hack.css";
+import "@styles/global.css";
 
 export default function App() {
   return (

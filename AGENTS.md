@@ -31,8 +31,8 @@ That is the same as running, in order: `typecheck` → `lint` → `format:check`
 
 - **Vite** 6, **React** 19, **TypeScript** 5.5 (strict)
 - **Vercel**: `@vercel/analytics`, `@vercel/speed-insights` in `src/App.tsx`; root `vercel.json` for `dist` output
-- Styling: global CSS in `src/css/hack.css` (imports `reset.css`, `all.min.css`), **Source Code Pro** from `index.html` (Google Fonts)
-- **Social icons**: `lucide-react` in `socials.tsx`; Font Awesome assets remain in the repo (see comments there)
+- Styling: global CSS in `src/css/global.css` (imports `reset.css`, Font Awesome from `/fonts/fontawesome/all.min.css` in `public/fonts/fontawesome/`), **Source Code Pro** from `index.html` (Google Fonts)
+- **Social icons**: Font Awesome classes in `socials.tsx`; webfont kit lives under `public/fonts/fontawesome/` (`all.min.css`, `*.woff2`, `LICENSE.txt`)
 
 ## Layout
 
