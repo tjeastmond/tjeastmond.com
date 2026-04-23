@@ -22,14 +22,16 @@ export default function LiteModeToggle() {
       document.documentElement.removeAttribute("data-theme");
     }
     setLite(enableLite);
+    setMetaThemeColor(enableLite ? LITE_COLOR : DARK_COLOR);
     try {
       localStorage.setItem(STORAGE_KEY, enableLite ? "lite" : "dark");
     } catch {}
   }, []);
 
   useEffect(() => {
-    setMetaThemeColor(lite ? LITE_COLOR : DARK_COLOR);
-  }, [lite]);
+    const isLite = document.documentElement.getAttribute("data-theme") === "lite";
+    setMetaThemeColor(isLite ? LITE_COLOR : DARK_COLOR);
+  }, []);
 
   const Icon = lite ? Moon : Sun;
 
@@ -42,7 +44,7 @@ export default function LiteModeToggle() {
         aria-pressed={lite}
         aria-label={lite ? "Switch to dark theme" : "Switch to light theme"}
       >
-        <Icon className="theme-toggle-icon" aria-hidden focusable="false" />
+        <Icon className="theme-toggle-icon" aria-hidden="true" focusable="false" />
       </button>
     </div>
   );
