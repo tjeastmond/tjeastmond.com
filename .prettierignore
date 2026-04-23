@@ -30,6 +30,9 @@ pnpm-lock.yaml
 # Ignore coverage reports
 coverage
 
+# Ignore Claude Code internal files
+.claude
+
 # Ignore generated files from Prisma or other ORMs
 prisma/generated
 
