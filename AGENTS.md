@@ -31,8 +31,8 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 
 - **Vite** 6, **React** 19, **TypeScript** 5.5 (strict)
 - **Vercel**: `@vercel/analytics`, `@vercel/speed-insights` in `src/App.tsx`; root `vercel.json` for `dist` output
-- Styling: global CSS in `src/css/global.css` (imports `reset.css`, Font Awesome from `/fonts/fontawesome/all.min.css` in `public/fonts/fontawesome/`), **Source Code Pro** from `index.html` (Google Fonts)
-- **Social icons**: Font Awesome classes in `socials.tsx`; webfont kit lives under `public/fonts/fontawesome/` (`all.min.css`, `*.woff2`, `LICENSE.txt`)
+- Styling: global CSS in `src/css/global.css` (imports `reset.css`, Font Awesome from `src/fonts/fontawesome/all.min.css`), **Source Code Pro** from `index.html` (Google Fonts)
+- **Social icons**: Font Awesome classes in `socials.tsx`; webfont kit lives under `src/fonts/fontawesome/` (`all.min.css`, `*.woff2`, `LICENSE.txt`) — Vite bundles and fingerprints these at build time
 
 ## Layout
 

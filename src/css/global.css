@@ -1,5 +1,5 @@
 @import "reset.css";
-@import url("/fonts/fontawesome/all.min.css");
+@import "../fonts/fontawesome/all.min.css";
 
 :root {
   --color-body-bg: #1d1e22;
