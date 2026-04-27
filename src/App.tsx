@@ -8,7 +8,6 @@ import "@styles/global.css";
 export default function App() {
   return (
     <>
-      {/* <LiteModeToggle /> */}
       <main className="page">
         <div className="main-content">
           <SiteHeader />
@@ -37,4 +36,3 @@ export default function App() {
     </>
   );
 }
-// My name is TJ — girl dad first, everything else second. That everything else includes
