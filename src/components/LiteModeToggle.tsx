@@ -1,5 +1,5 @@
-import { Moon, Sun } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import { IconMoon, IconSun } from "./SiteIcons";
 
 const STORAGE_KEY = "tjeastmond-theme";
 const DARK_COLOR = "#1d1e22";
@@ -33,7 +33,7 @@ export default function LiteModeToggle() {
     setMetaThemeColor(isLite ? LITE_COLOR : DARK_COLOR);
   }, []);
 
-  const Icon = lite ? Moon : Sun;
+  const Icon = lite ? IconMoon : IconSun;
 
   return (
     <div className="theme-toggle-wrap">

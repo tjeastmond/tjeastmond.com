@@ -1,21 +1,24 @@
-type Item = { label: string; link: string; iconClass: string };
+import type { ComponentType, SVGProps } from "react";
+import { IconBluesky, IconGithub, IconGlobe, IconLinkedIn, IconSteam } from "./SiteIcons";
+
+type Item = { label: string; link: string; Icon: ComponentType<SVGProps<SVGSVGElement>> };
 
 const socials: Item[] = [
-  { label: "GitHub", link: "https://github.com/tjeastmond", iconClass: "fa-brands fa-github-alt" },
-  { label: "LinkedIn", link: "https://www.linkedin.com/in/tjeastmond/", iconClass: "fa-brands fa-linkedin-in" },
-  { label: "Steam", link: "https://steamcommunity.com/id/spiteshow", iconClass: "fa-brands fa-steam" },
-  { label: "Bluesky", link: "https://bsky.app/profile/tjeastmond.bsky.social", iconClass: "fa-brands fa-bluesky" },
-  { label: "Swoo.io", link: "https://swoo.io", iconClass: "fa-solid fa-globe" },
+  { label: "GitHub", link: "https://github.com/tjeastmond", Icon: IconGithub },
+  { label: "LinkedIn", link: "https://www.linkedin.com/in/tjeastmond/", Icon: IconLinkedIn },
+  { label: "Steam", link: "https://steamcommunity.com/id/spiteshow", Icon: IconSteam },
+  { label: "Bluesky", link: "https://bsky.app/profile/tjeastmond.bsky.social", Icon: IconBluesky },
+  { label: "Swoo.io", link: "https://swoo.io", Icon: IconGlobe },
 ];
 
 export default function Socials() {
   return (
     <ul className="social-media">
-      {socials.map(({ label, link, iconClass }) => (
+      {socials.map(({ label, link, Icon }) => (
         <li key={label}>
           <a className="social-icon" href={link} rel="noopener noreferrer" target="_blank" aria-label={label}>
             <span className="label">{label}</span>
-            <i className={`${iconClass} social-icon-fa`} aria-hidden />
+            <Icon className="social-icon-svg" />
           </a>
         </li>
       ))}

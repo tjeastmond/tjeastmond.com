@@ -119,15 +119,23 @@ a.title {
     color 0.3s ease;
 }
 
-.social-icon-fa {
-  font-size: var(--social-icon-px);
-  line-height: 1;
+.social-icon-svg {
+  width: var(--social-icon-px);
+  height: var(--social-icon-px);
+  display: block;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
 
 .social-icon:hover,
 .social-icon:focus-visible {
   color: var(--color-icon-hover);
   outline: none;
+}
+
+.social-icon:hover .social-icon-svg,
+.social-icon:focus-visible .social-icon-svg {
+  transform: scale(1.12);
 }
 
 .social-icon .label {
@@ -145,7 +153,7 @@ a.title {
 .theme-toggle-wrap {
   position: fixed;
   right: max(10px, env(safe-area-inset-right, 0));
-  bottom: max(10px, env(safe-area-inset-bottom, 0));
+  top: max(10px, env(safe-area-inset-top, 0));
   z-index: 10;
   display: flex;
   align-items: center;
