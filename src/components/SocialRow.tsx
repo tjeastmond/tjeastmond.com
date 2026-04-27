@@ -1,15 +1,11 @@
 import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
 import { useSupportsHover } from "../hooks/useSupportsHover";
-import LiteModeToggle from "./LiteModeToggle";
 import { SOCIAL_ATTRIBUTION_LABELS, type SocialAttribution } from "./socialLinkData";
 import SocialLinks from "./SocialLinks";
 
-type Segment = SocialAttribution | "theme";
+type Segment = SocialAttribution;
 
-const ATTRIBUTION_LABELS: Record<Segment, string> = {
-  ...SOCIAL_ATTRIBUTION_LABELS,
-  theme: "lite or dark?",
-};
+const ATTRIBUTION_LABELS: Record<Segment, string> = SOCIAL_ATTRIBUTION_LABELS;
 
 type Timers = {
   labelSwap: ReturnType<typeof setTimeout> | null;
@@ -34,8 +30,6 @@ function rowRevealMs(): number {
 
 function segmentFromEvent(event: MouseEvent): Segment | null {
   const target = event.target as HTMLElement;
-  if (target.closest(".theme-toggle")) return "theme";
-
   const element = target.closest("[data-attribution-hover]");
   const value = element?.getAttribute("data-attribution-hover");
 
@@ -78,8 +72,6 @@ export default function SocialRow() {
     return (
       <div className="social-row">
         <SocialLinks />
-        <span className="social-divider" aria-hidden="true" />
-        <LiteModeToggle />
       </div>
     );
   }
@@ -181,8 +173,6 @@ function SocialRowHoverLabels() {
   return (
     <div className="social-row" onMouseEnter={onPointer} onMouseMove={onPointer} onMouseLeave={onRowLeave}>
       <SocialLinks />
-      <span className="social-divider" aria-hidden="true" />
-      <LiteModeToggle />
       <span
         className={`social-attribution${attributionConcealed ? " social-attribution--concealed" : ""}`}
         aria-hidden="true"

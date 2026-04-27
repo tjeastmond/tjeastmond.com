@@ -1,16 +1,17 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Link from "@components/link";
+import SiteHeader from "@components/SiteHeader";
 import SocialRow from "@components/SocialRow";
-import Title from "@components/title";
 import "@styles/global.css";
 
 export default function App() {
   return (
     <>
+      {/* <LiteModeToggle /> */}
       <main className="page">
         <div className="main-content">
-          <Title />
+          <SiteHeader />
           <div className="body-text">
             <p>
               My name is TJ - girl dad first, everything else second. That everything else includes working as a Senior
