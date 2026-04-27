@@ -12,7 +12,6 @@ export default defineConfig({
       "@": path.resolve(root, "src"),
       "@components": path.resolve(root, "src/components"),
       "@styles": path.resolve(root, "src/css"),
-      "@webfonts": path.resolve(root, "src/webfonts"),
     },
   },
   test: {

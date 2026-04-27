@@ -41,7 +41,7 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 - `src/components/` — UI pieces; archived scramble effect under `src/archived/scrambler-effect/`
 - `public/` — static assets, favicons, `logo.svg`, `images/icons/`
 
-**Path aliases** (see `tsconfig.json`): `@components/*`, `@styles/*`, `@webfonts/*` — prefer these over deep relatives.
+**Path aliases** (see `tsconfig.json`): `@components/*`, `@styles/*` — prefer these over deep relatives.
 
 ## What not to expect
 
