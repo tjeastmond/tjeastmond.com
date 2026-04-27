@@ -1,43 +1,49 @@
 # Agent notes — tjeastmond.com
 
-Personal single-page site (Next.js App Router). No API routes, no database, no auth. Editable content lives in `src/app/page.tsx` and `src/components/`.
+Personal single-page site (**Vite** + React). No API routes, no database, no auth. Editable copy and layout are in `src/App.tsx` and `src/components/`.
+
+## Agent workflow
+
+**Before finishing a change (or in CI): always run `pnpm check`.** If any step fails, stop and fix the issues before you consider the task done.
+
+The `check` script in `package.json` is:
+
+```text
+pnpm test && pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run build
+```
+
+That is the same as running, in order: `test` → `typecheck` → `lint` → `format:check` → `build`.
 
 ## Commands (pnpm)
 
 | Command | Purpose |
 |--------|--------|
-| `pnpm dev` | Dev server: Turbopack, port 3000 |
-| `pnpm build` | Production build |
-| `pnpm start` | Run production build |
-| `pnpm lint` | `next lint` (ESLint) |
-| `pnpm test` | Jest + ts-jest, jsdom; `*.spec.ts` / `*.test.ts` |
+| `pnpm check` | **Full validation** — `test`, `typecheck`, `lint`, `format:check`, `build` (use this; see above) |
+| `pnpm dev` | Vite dev server (port 3000) |
+| `pnpm typecheck` | `tsc --noEmit` |
+| `pnpm lint` | ESLint (`eslint.config.js` — `@eslint/js`, `typescript-eslint`, `react-hooks`, `react-refresh`) |
+| `pnpm format` / `pnpm format:check` | Prettier — write or check (`.prettierrc`, 2 spaces, 120 print width) |
+| `pnpm build` | `tsc && vite build` — production bundle to `dist/` |
+| `pnpm preview` / `pnpm start` | Serve production build |
+| `pnpm test` | Vitest; `*.spec.ts` / `*.test.ts` |
 
 ## Stack
 
-- **Next.js** 16 (App Router), **React** 19, **TypeScript** 5.5
-- **Vercel**: `@vercel/analytics`, `@vercel/speed-insights` (wired in `src/app/layout.tsx`)
-- Styling: global CSS in `src/css/hack.css` (imports `reset.css`, theme ~`#1d1e22` / `#fffcf7`), **Source Code Pro** via `next/font/google` in the root layout
-- **Font Awesome** class names in `socials.tsx` (`fab`, `fa-*`); ensure CSS for icons stays in sync
+- **Vite** 6, **React** 19, **TypeScript** 5.5 (strict)
+- **Vercel**: `@vercel/analytics`, `@vercel/speed-insights` in `src/App.tsx`; root `vercel.json` for `dist` output
+- Styling: global CSS in `src/css/global.css` (includes reset, imports Font Awesome from `src/fonts/fontawesome/all.min.css`), **Source Code Pro** from `index.html` (Google Fonts)
+- **Social icons**: Font Awesome classes in `socials.tsx`; webfont kit lives under `src/fonts/fontawesome/` (`all.min.css`, `*.woff2`, `LICENSE.txt`) — Vite bundles and fingerprints these at build time
 
 ## Layout
 
-- `src/app/` — `layout.tsx` (font, metadata export, analytics), `page.tsx` (home), `metadata.tsx` (SEO, icons, `robots`)
-- `src/components/` — UI pieces; `scrambler/` holds the text-scramble logic + `scrambler.spec.ts`
+- `index.html` — shell, head meta, theme bootstrap script, `#root` entry
+- `src/main.tsx` → `src/App.tsx` — page content, Vercel widgets
+- `src/components/` — UI pieces; archived scramble effect under `src/archived/scrambler-effect/`
 - `public/` — static assets, favicons, `logo.svg`, `images/icons/`
 
-**Path aliases** (see `tsconfig.json`): `@app/*`, `@components/*`, `@modules/*`, `@styles/*`, `@webfonts/*` — prefer these over deep relatives.
-
-## Patterns to respect
-
-- **`ScrambleText` / `scramblerText.tsx`**: client component (`"use client"`). Wraps `ScrambleText` from `scrambler.ts` (DOM + `requestAnimationFrame`). `Link` and `Title` use it; changing scramble behavior or refs may need cleanup in `useEffect` hooks.
-- **TypeScript** is `strict: false` — add explicit types for new public props/APIs; do not assume strict null checks.
-- **Metadata**: `metadata.tsx` is the single source for `export default metadata` consumed by the layout; keep `title` / `description` / icons coherent when editing.
+**Path aliases** (see `tsconfig.json`): `@components/*`, `@styles/*` — prefer these over deep relatives.
 
 ## What not to expect
 
-- No `.github/` workflows, no `vercel.json` in repo (deploy config may live in Vercel only).
+- No `.github/` workflows in the repo; deploy config is `vercel.json` plus the Vercel project.
 - README is minimal; this file and the source are the project map.
-
-## Before finishing a change
-
-Run `pnpm lint`, `pnpm test`, and `pnpm build` when edits touch components, config, or dependencies.

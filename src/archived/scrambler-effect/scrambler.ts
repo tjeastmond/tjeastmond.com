@@ -55,15 +55,12 @@ export default class ScrambleText {
   }
 
   private getRandomChar(): string {
-    return this.config.characters[
-      Math.floor(Math.random() * this.config.characters.length)
-    ];
+    return this.config.characters[Math.floor(Math.random() * this.config.characters.length)];
   }
 
   private setTextContent(index: number, char: string): void {
     const text = this.element!.textContent!;
-    this.element!.textContent =
-      text.substring(0, index) + char + text.substring(index + 1);
+    this.element!.textContent = text.substring(0, index) + char + text.substring(index + 1);
   }
 
   private animateScrambling(): void {

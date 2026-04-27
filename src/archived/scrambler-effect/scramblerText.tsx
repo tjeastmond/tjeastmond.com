@@ -1,9 +1,9 @@
-"use client";
+/* Archived, unused by the live site. */
 
-import React, { forwardRef, JSX, useCallback, useEffect, useRef, useState } from "react";
-import ScrambleText, { OptionalOptions } from "./scrambler/scrambler";
+import type { JSX } from "react";
+import React, { forwardRef, useCallback, useEffect, useRef, useState } from "react";
+import ScrambleText, { type OptionalOptions } from "./scrambler";
 
-// Use types instead of interfaces to allow proper extension
 type ScrambleTextProps<T extends keyof JSX.IntrinsicElements> = {
   as: T;
   options?: OptionalOptions;
@@ -11,9 +11,10 @@ type ScrambleTextProps<T extends keyof JSX.IntrinsicElements> = {
   useHover?: boolean;
 } & React.ComponentPropsWithoutRef<T>;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const WrapperComponent = forwardRef<HTMLElement, ScrambleTextProps<any>>(
   ({ as: Tag = "div", children, ...props }, ref) => {
-    return React.createElement(Tag, { ref, ...props }, children);
+    return React.createElement(Tag, { ref, ...props } as never, children);
   },
 );
 
@@ -26,7 +27,7 @@ export default function Scrambler<T extends keyof JSX.IntrinsicElements>({
   useHover = false,
   ...props
 }: ScrambleTextProps<T>) {
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLElement | null>(null);
   const [scrambler, setScrambler] = useState<ScrambleText | null>(null);
 
   const start = useCallback(() => {
@@ -37,7 +38,6 @@ export default function Scrambler<T extends keyof JSX.IntrinsicElements>({
     scrambler?.restoreNow();
   }, [scrambler]);
 
-  // Use JSON.stringify to compare options and prevent unnecessary re-instantiation
   const optionsKey = JSON.stringify(options);
 
   useEffect(() => {
@@ -45,7 +45,8 @@ export default function Scrambler<T extends keyof JSX.IntrinsicElements>({
       const scramblerInstance = new ScrambleText(elementRef.current, options);
       setScrambler(scramblerInstance);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // `options` is covered by `optionsKey` (JSON snapshot); we intentionally avoid `options` in deps to skip rebuilds on referential identity changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- optionsKey tracks serialized options
   }, [optionsKey]);
 
   useEffect(() => {

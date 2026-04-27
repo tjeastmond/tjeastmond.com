@@ -1,35 +1,25 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
-    "target": "ES2020",
-
-    "allowJs": true,
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
     "skipLibCheck": true,
-    "strict": false,
-    "noEmit": true,
-    "incremental": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
     "paths": {
-      "@app/*": ["src/app/*"],
+      "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@modules/*": ["src/modules/*"],
-      "@styles/*": ["src/css/*"],
-      "@webfonts/*": ["src/webfonts/*"]
+      "@styles/*": ["src/css/*"]
     }
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.js", "**/*.ts", "**/*.tsx", "**/*.css"],
-  "exclude": ["node_modules"]
+  "include": ["src", "vite.config.ts"]
 }
