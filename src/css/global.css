@@ -1,5 +1,13 @@
 @import "../fonts/fontawesome/all.min.css";
 
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/roboto-mono/roboto-mono-400.woff2") format("woff2");
+}
+
 /* prettier-ignore */
 figure, article, aside, details, figcaption, footer, header,
 hgroup, menu, nav, section, table, legend, label, form, fieldset,
@@ -28,7 +36,7 @@ p, h6, h5, h4, h2 {
   --color-link: #a8c7fa;
   --color-icon: #5e5e5e;
   --color-icon-hover: #a8c7fa;
-  --font-sans: "Source Code Pro", ui-monospace, monospace;
+  --font-sans: "Roboto Mono", ui-monospace, monospace;
   --social-icon-px: 28px;
 }
 
@@ -46,7 +54,7 @@ body {
   -webkit-text-size-adjust: none;
   font-family: var(--font-sans);
   font-size: 1.6em;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
   background-color: var(--color-body-bg);
   color: var(--color-body-fg);
