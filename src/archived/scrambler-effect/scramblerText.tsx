@@ -45,6 +45,8 @@ export default function Scrambler<T extends keyof JSX.IntrinsicElements>({
       const scramblerInstance = new ScrambleText(elementRef.current, options);
       setScrambler(scramblerInstance);
     }
+    // `options` is covered by `optionsKey` (JSON snapshot); we intentionally avoid `options` in deps to skip rebuilds on referential identity changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- optionsKey tracks serialized options
   }, [optionsKey]);
 
   useEffect(() => {
