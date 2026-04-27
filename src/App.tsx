@@ -1,31 +1,39 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Link from "@components/link";
-import LiteModeToggle from "@components/LiteModeToggle";
-import Socials from "@components/socials";
+import SocialRow from "@components/SocialRow";
 import Title from "@components/title";
 import "@styles/global.css";
 
 export default function App() {
   return (
     <>
-      <div className="container">
+      <main className="page">
         <div className="main-content">
           <Title />
-          <p>
-            You&apos;ve stumbled upon the homepage of TJ Eastmond: Girl Dad, Husband, Gamer, Marvel SNAP player,
-            Engineering Manager, Software Engineer, and Data Engineer.
-          </p>
-          <p>
-            Shoot me an <Link url="mailto:tj.eastmond@gmail.com" text="email" />, or{" "}
-            <Link url="https://buymeacoffee.com/tjeastmond" text="Buy Me a Coffee" />.
-          </p>
-          <Socials />
+          <div className="body-text">
+            <p>
+              My name is TJ - girl dad first, everything else second. That everything else includes working as a Senior
+              Technical Leader and Software Engineer. I build backend services and tooling that power platforms from
+              fintech to foodtech. I lean into agentic workflows, drawing on my long history as an engineer to produce
+              higher-quality software faster with the assistance of Agents.
+            </p>
+            <p>
+              I&apos;m an avid gamer currently enjoying Marvel SNAP, and starting games before finishing one I started
+              only a weekend ago. I&apos;m usually reading a ton, writing a little, or building something I didn&apos;t
+              need to build.
+            </p>
+            <p>
+              Best way to reach me is by <Link url="mailto:tj.eastmond@gmail.com" text="email" />. Links below if
+              you&apos;d rather lurk first.
+            </p>
+          </div>
+          <SocialRow />
         </div>
-      </div>
-      <LiteModeToggle />
+      </main>
       <Analytics />
       <SpeedInsights />
     </>
   );
 }
+// My name is TJ — girl dad first, everything else second. That everything else includes

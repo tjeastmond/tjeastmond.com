@@ -36,16 +36,14 @@ export default function LiteModeToggle() {
   const Icon = lite ? IconMoon : IconSun;
 
   return (
-    <div className="theme-toggle-wrap">
-      <button
-        type="button"
-        className="theme-toggle-button"
-        onClick={() => apply(!lite)}
-        aria-pressed={lite}
-        aria-label={lite ? "Switch to dark theme" : "Switch to light theme"}
-      >
-        <Icon className="theme-toggle-icon" aria-hidden="true" focusable="false" />
-      </button>
-    </div>
+    <button
+      type="button"
+      className="theme-toggle"
+      onClick={() => apply(!lite)}
+      aria-pressed={lite}
+      aria-label={lite ? "Switch to dark theme" : "Switch to light theme"}
+    >
+      <Icon className="theme-toggle-icon" aria-hidden="true" focusable="false" />
+    </button>
   );
 }

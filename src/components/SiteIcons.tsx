@@ -8,13 +8,7 @@ type IconFrameProps = IconProps & {
   viewBox?: string;
 };
 
-function IconFrame({
-  children,
-  strokeWidth = 1.5,
-  variant = "stroke",
-  viewBox = "0 0 24 24",
-  ...props
-}: IconFrameProps) {
+function IconFrame({ children, strokeWidth = 2, variant = "stroke", viewBox = "0 0 24 24", ...props }: IconFrameProps) {
   const sharedProps = {
     width: "1em",
     height: "1em",
