@@ -19,7 +19,7 @@ export default function App() {
               higher-quality software faster with the assistance of Agents.
             </p>
             <p>
-              I&apos;m an avid gamer currently enjoying Marvel SNAP, and starting games before finishing one I started
+              I&apos;m an avid gamer currently enjoying Marvel SNAP, and starting new games before finishing one I started
               only a weekend ago. I&apos;m usually reading a ton, writing a little, or building something I didn&apos;t
               need to build.
             </p>
