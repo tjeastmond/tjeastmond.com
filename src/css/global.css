@@ -74,32 +74,10 @@ body {
   color: var(--color-body-fg);
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: inherit;
-  text-decoration: none;
-}
-
-.logo-wordmark {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.logo-name {
+.site-header-name {
   color: var(--color-heading);
-  font-size: 20px;
+  font-size: 23px;
   letter-spacing: -0.01em;
-  line-height: 1;
-}
-
-.logo-subtitle {
-  font-size: 11px;
-  opacity: 0.5;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
   line-height: 1;
 }
 
@@ -140,12 +118,12 @@ a {
   text-decoration: none;
 }
 
-a:not(.social-link, .logo) {
+a:not(.social-link) {
   position: relative;
   transition: color 0.2s ease;
 }
 
-a:not(.social-link, .logo)::after {
+a:not(.social-link)::after {
   content: "";
   position: absolute;
   left: 0;
@@ -158,13 +136,13 @@ a:not(.social-link, .logo)::after {
   transition: transform 0.25s ease;
 }
 
-a:not(.social-link, .logo):hover,
-a:not(.social-link, .logo):focus-visible {
+a:not(.social-link):hover,
+a:not(.social-link):focus-visible {
   color: var(--color-body-fg);
 }
 
-a:not(.social-link, .logo):hover::after,
-a:not(.social-link, .logo):focus-visible::after {
+a:not(.social-link):hover::after,
+a:not(.social-link):focus-visible::after {
   transform: scaleX(1);
 }
 
@@ -336,8 +314,8 @@ a:not(.social-link, .logo):focus-visible::after {
 
 @media (prefers-reduced-motion: reduce) {
   .social-attribution,
-  a:not(.social-link, .logo),
-  a:not(.social-link, .logo)::after,
+  a:not(.social-link),
+  a:not(.social-link)::after,
   .social-link {
     transition: none;
     transform: none;
