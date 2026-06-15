@@ -33,7 +33,14 @@ function segmentFromEvent(event: MouseEvent): Segment | null {
   const element = target.closest("[data-attribution-hover]");
   const value = element?.getAttribute("data-attribution-hover");
 
-  if (value === "github" || value === "linkedin" || value === "steam" || value === "bluesky" || value === "swoo") {
+  if (
+    value === "github" ||
+    value === "linkedin" ||
+    value === "x" ||
+    value === "steam" ||
+    value === "bluesky" ||
+    value === "swoo"
+  ) {
     return value;
   }
 

@@ -1,7 +1,7 @@
 import type { ComponentType, SVGProps } from "react";
-import { IconBluesky, IconGithub, IconGlobe, IconLinkedIn, IconSteam } from "./SiteIcons";
+import { IconBluesky, IconGithub, IconGlobe, IconLinkedIn, IconSteam, IconX } from "./SiteIcons";
 
-export type SocialAttribution = "github" | "linkedin" | "steam" | "bluesky" | "swoo";
+export type SocialAttribution = "github" | "linkedin" | "x" | "steam" | "bluesky" | "swoo";
 
 export type SocialLink = {
   href: string;
@@ -13,6 +13,7 @@ export type SocialLink = {
 export const SOCIAL_ATTRIBUTION_LABELS: Record<SocialAttribution, string> = {
   github: "github",
   linkedin: "linkedin",
+  x: "x.com",
   steam: "steam",
   bluesky: "bluesky",
   swoo: "swoo.io",
@@ -26,12 +27,13 @@ export const SOCIAL_LINKS: SocialLink[] = [
     attribution: "linkedin",
     Icon: IconLinkedIn,
   },
-  { href: "https://steamcommunity.com/id/spiteshow", label: "Steam", attribution: "steam", Icon: IconSteam },
+  { href: "https://x.com/tjeastmond_", label: "X", attribution: "x", Icon: IconX },
   {
     href: "https://bsky.app/profile/tjeastmond.bsky.social",
     label: "Bluesky",
     attribution: "bluesky",
     Icon: IconBluesky,
   },
+  { href: "https://steamcommunity.com/id/spiteshow", label: "Steam", attribution: "steam", Icon: IconSteam },
   { href: "https://swoo.io", label: "Swoo.io", attribution: "swoo", Icon: IconGlobe },
 ];
