@@ -9,16 +9,16 @@ Personal single-page site (**Vite** + React). No API routes, no database, no aut
 The `check` script in `package.json` is:
 
 ```text
-pnpm test && pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run build
+pnpm test && pnpm run typecheck && pnpm run lint && pnpm run format && pnpm run build
 ```
 
-That is the same as running, in order: `test` → `typecheck` → `lint` → `format:check` → `build`.
+That is the same as running, in order: `test` → `typecheck` → `lint` → `format` → `build`. The `format` step **rewrites** files with Prettier when they are not already formatted.
 
 ## Commands (pnpm)
 
 | Command | Purpose |
 |--------|--------|
-| `pnpm check` | **Full validation** — `test`, `typecheck`, `lint`, `format:check`, `build` (use this; see above) |
+| `pnpm check` | **Full validation** — `test`, `typecheck`, `lint`, `format` (write), `build` (use this; see above) |
 | `pnpm dev` | Vite dev server (port 3000) |
 | `pnpm typecheck` | `tsc --noEmit` |
 | `pnpm lint` | ESLint (`eslint.config.js` — `@eslint/js`, `typescript-eslint`, `react-hooks`, `react-refresh`) |
