@@ -31,15 +31,15 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 
 - **Vite** 6, **React** 19, **TypeScript** 5.5 (strict)
 - **Vercel**: `@vercel/analytics`, `@vercel/speed-insights` in `src/App.tsx`; root `vercel.json` for `dist` output
-- Styling: global CSS in `src/css/global.css` (includes reset, imports Font Awesome from `src/fonts/fontawesome/all.min.css`), **Source Code Pro** from `index.html` (Google Fonts)
-- **Social icons**: Font Awesome classes in `socials.tsx`; webfont kit lives under `src/fonts/fontawesome/` (`all.min.css`, `*.woff2`, `LICENSE.txt`) — Vite bundles and fingerprints these at build time
+- Styling: global CSS in `src/css/global.css` (includes reset); **Roboto Mono** self-hosted from `public/fonts/roboto-mono/`
+- **Social icons**: custom inline SVGs in `SiteIcons.tsx`, wired through `socialLinkData.ts` → `SocialLinks.tsx` → `SocialRow.tsx`
 
 ## Layout
 
-- `index.html` — shell, head meta, theme bootstrap script, `#root` entry
+- `index.html` — shell, head meta, `#root` entry
 - `src/main.tsx` → `src/App.tsx` — page content, Vercel widgets
 - `src/components/` — UI pieces; archived scramble effect under `src/archived/scrambler-effect/`
-- `public/` — static assets, favicons, `logo.svg`, `images/icons/`
+- `public/` — static assets, favicons, `images/icons/`, self-hosted fonts
 
 **Path aliases** (see `tsconfig.json`): `@components/*`, `@styles/*` — prefer these over deep relatives.
 
