@@ -47,3 +47,18 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 
 - No `.github/` workflows in the repo; deploy config is `vercel.json` plus the Vercel project.
 - README is minimal; this file and the source are the project map.
+
+## Learned User Preferences
+
+- Dark theme only; no theme toggle in the UI.
+- Social row: first icon flush with body text left edge; uniform spacing between icons; `cursor: pointer` on the icons, with the zoom/color effect on hover and keyboard focus (`:hover`/`:focus-visible`).
+- When implementing attached plans, do not edit the plan file.
+- Include the `.cursor` directory in commits when adding Cursor hooks or config.
+
+## Learned Workspace Facts
+
+- Minimal single-page header: site name only (no logo-mark, subtitle, or home link).
+- Social links (inventory, order, hrefs, labels) live in `socialLinkData.ts` — the canonical source; e.g. X is labeled `x.com`.
+- Page layout follows Swoo.io patterns: animated underline on body links; desktop social row shows attribution labels on hover.
+- Layout constants (content/body max-widths, top padding) live in `src/css/global.css` — the canonical source; content is not vertically centered.
+- `.cursor/hooks/state/continual-learning.json` is gitignored (local continual-learning hook state).
