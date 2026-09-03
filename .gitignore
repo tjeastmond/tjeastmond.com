@@ -21,7 +21,7 @@
 # misc
 .DS_Store
 *.pem
-.cursor/hooks/state/continual-learning.json
+.cursor/hooks/state/
 
 # debug
 npm-debug.log*
