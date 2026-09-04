@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TJ Eastmond — Architect for the Modern Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Geist+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #f5f2eb;
+        --ink: #1e1c19;
+        --accent: #964b34;
+        --rule: #e3dfd5;
+        --font-serif: "Cormorant Garamond", "Georgia", serif;
+        --font-mono: "Geist Mono", "SF Mono", "Menlo", monospace;
+      }
+      html {
+        font-size: 16px;
+      }
+      body {
+        background-color: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-serif);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .page {
+        position: relative;
+        width: 100%;
+        max-width: 1360px;
+        min-height: 820px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--rule);
+        padding: 6px;
+      }
+      .page::after {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border: 1px solid var(--accent);
+        opacity: 0.3;
+        pointer-events: none;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 720px;
+        width: 100%;
+        padding: 80px 0;
+        min-height: 820px;
+      }
+      .header-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .folio-line {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .header-rule {
+        width: 160px;
+        height: 1px;
+        background: var(--rule);
+        border: none;
+      }
+      .title-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+      .main-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(3rem, 5vw, 5rem);
+        font-weight: 400;
+        color: var(--ink);
+        letter-spacing: 0.02em;
+        line-height: 1.2;
+      }
+      .subtitle {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 1.5rem;
+        color: var(--accent);
+        font-weight: 400;
+      }
+      .floret {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .floret-line {
+        width: 40px;
+        height: 1px;
+        background: var(--accent);
+        opacity: 0.6;
+      }
+      .floret-icon {
+        width: 14px;
+        height: 14px;
+        color: var(--accent);
+      }
+      .floret-icon svg {
+        width: 100%;
+        height: 100%;
+        stroke: var(--accent);
+        fill: none;
+        stroke-width: 1.5;
+      }
+      .description {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        color: var(--ink);
+        text-align: center;
+        max-width: 480px;
+        line-height: 1.6;
+      }
+      .index-table {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 560px;
+      }
+      .index-row {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        padding: 12px 0;
+        text-decoration: none;
+        color: inherit;
+        transition: opacity 0.2s ease;
+        cursor: pointer;
+      }
+      .index-row:hover {
+        opacity: 0.7;
+      }
+      .index-row:hover .row-title {
+        color: var(--accent);
+      }
+      .row-number {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--accent);
+        width: 32px;
+        flex-shrink: 0;
+      }
+      .row-title {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: color 0.2s ease;
+      }
+      .row-dots {
+        flex: 1;
+        overflow: hidden;
+        font-family: var(--font-serif);
+        font-size: 14px;
+        color: var(--rule);
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .row-numeral {
+        font-family: var(--font-serif);
+        font-size: 16px;
+        font-weight: 600;
+        font-style: italic;
+        width: 40px;
+        text-align: right;
+        flex-shrink: 0;
+      }
+      .colophon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      .colophon-rule {
+        width: 80px;
+        height: 1px;
+        background: var(--rule);
+        border: none;
+      }
+      .printer-mark {
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--rule);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg);
+        opacity: 0.9;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+      .printer-mark:hover {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+      .printer-mark svg {
+        width: 22px;
+        height: 22px;
+        fill: var(--accent);
+        opacity: 0.35;
+        transition: opacity 0.3s ease;
+      }
+      .printer-mark:hover svg {
+        opacity: 0.7;
+      }
+      .colophon-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+      .edition-line {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--ink);
+      }
+      .printed-line {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 13px;
+        color: var(--accent);
+      }
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem;
+        }
+        .page {
+          min-height: auto;
+        }
+        .content {
+          min-height: auto;
+          padding: 48px 20px;
+          gap: 48px;
+        }
+        h1 {
+          font-size: 2.5rem;
+        }
+        .subtitle {
+          font-size: 1.1rem;
+        }
+        .index-table {
+          max-width: 100%;
+        }
+        .row-dots {
+          display: none;
+        }
+        .row-numeral {
+          margin-left: auto;
+        }
+        .description {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="page"> -->
+    <div class="content">
+      <div class="header-meta">
+        <span class="folio-line">Folio No. XXIV &bull; Personal Portfolio</span>
+        <hr class="header-rule" />
+      </div>
+      <div class="title-block">
+        <div class="main-title">
+          <h1>TJ EASTMOND</h1>
+          <span class="subtitle">Architect for the Modern Web</span>
+        </div>
+        <div class="floret">
+          <span class="floret-line"></span>
+          <span class="floret-icon"
+            ><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 1 C7 1, 4 4, 4 7 C4 10, 7 13, 7 13 C7 13, 10 10, 10 7 C10 4, 7 1, 7 1 Z" />
+              <line x1="7" y1="1" x2="7" y2="13" />
+              <line x1="3" y1="5" x2="11" y2="5" /></svg
+          ></span>
+          <span class="floret-line"></span>
+        </div>
+        <p class="description">
+          A personal repository and catalog of computer-aided crafts, system designs, and various digital artifacts
+          produced at the intersection of engineering and visual style.
+        </p>
+      </div>
+      <nav class="index-table" aria-label="Table of Contents">
+        <a href="#about" class="index-row"
+          ><span class="row-number">01.</span><span class="row-title">About the Engineer</span
+          ><span class="row-dots" aria-hidden="true"
+            >......................................................................................................................</span
+          ><span class="row-numeral">I</span></a
+        >
+        <a href="#work" class="index-row"
+          ><span class="row-number">02.</span><span class="row-title">Selected Code &amp; Craft</span
+          ><span class="row-dots" aria-hidden="true"
+            >......................................................................................................................</span
+          ><span class="row-numeral">II</span></a
+        >
+        <a href="#design" class="index-row"
+          ><span class="row-number">03.</span><span class="row-title">Design Portfolio</span
+          ><span class="row-dots" aria-hidden="true"
+            >......................................................................................................................</span
+          ><span class="row-numeral">III</span></a
+        >
+        <a href="#writing" class="index-row"
+          ><span class="row-number">04.</span><span class="row-title">Writings &amp; Essays</span
+          ><span class="row-dots" aria-hidden="true"
+            >......................................................................................................................</span
+          ><span class="row-numeral">IV</span></a
+        >
+        <a href="#github" class="index-row"
+          ><span class="row-number">05.</span><span class="row-title">GitHub Repository</span
+          ><span class="row-dots" aria-hidden="true"
+            >......................................................................................................................</span
+          ><span class="row-numeral">V</span></a
+        >
+        <a href="#contact" class="index-row"
+          ><span class="row-number">06.</span><span class="row-title">Contact &amp; Telegraphy</span
+          ><span class="row-dots" aria-hidden="true"
+            >......................................................................................................................</span
+          ><span class="row-numeral">VI</span></a
+        >
+      </nav>
+      <div class="colophon">
+        <hr class="colophon-rule" />
+        <div class="printer-mark" title="Rock on">
+          <svg viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m780 141.36c-37.199 0-67.441 30.242-67.441 67.441v47.16c-10.68-8.0391-24-12.719-38.398-12.719h-4.3203c-19.922 0-37.68 9-49.559 23.039-11.16-17.039-30.48-28.32-52.32-28.32h-7.9219c-14.039 0-27 4.6797-37.441 12.602v-77.762c0-36.719-29.879-66.602-66.602-66.602-36.719 0-66.602 29.879-66.602 66.602v255.6c-22.441 19.078-36.602 47.641-36.602 79.441v100.44c0 49.559 25.078 93.48 63.121 119.64v150.72c0 43.441 35.398 78.84 78.961 78.84h65.641v20.039c-29.52 3-52.559 27.961-52.559 58.32 0 32.281 26.281 58.559 58.68 58.559 15 0 29.281-5.7617 39.961-15.84 10.684 10.078 24.844 15.836 39.961 15.836 32.398 0 58.68-26.281 58.68-58.559 0-30.359-23.039-55.32-52.559-58.32v-20.039h41.52c3.9609 11.16 12.84 20.039 24 24v12.359c0 18.238 14.879 33 33 33 18.121 0 32.879-14.762 32.879-33l0.003906-265.92c38.039-26.16 63.121-70.078 63.121-119.64l-0.003906-171.24c0.12109-0.96094 0.24219-1.8008 0.24219-2.7578v-225.48c0-37.199-30.242-67.441-67.441-67.441zm-148.8 166.8c0-21.242 17.281-38.52 38.641-38.52h4.3203c20.039 0 36.48 15.242 38.398 34.559 0.12109 1.3203 0.24219 2.6406 0.24219 3.9609v128.88c-0.35938 21-17.52 38.039-38.641 38.039h-4.3203c-9.7188 0-18.602-3.6016-25.32-9.4805 4.6797-12.359 7.3203-25.918 7.3203-39.961v-9.3555c0-7.3203-5.8789-13.199-13.199-13.199h-7.4414zm-108.48-7.3203c0-20.641 16.801-37.32 37.32-37.32h7.9219c20.52 0 37.199 16.559 37.32 37.199v0.12109 102.24h-82.559zm-108.12-128.04c0-22.918 18.602-41.398 41.398-41.398 22.801 0 41.398 18.48 41.398 41.398v230.28l-39.84-0.003906c-15.359 0-29.879 3.2422-42.961 9.2422zm264.24 863.04c0 17.758-14.52 32.16-32.281 32.16-7.8008 0-15.359-3-21.121-8.0391v-0.12109c-4.4414-21.242-23.281-36.719-45.121-36.719-7.3203 0-13.199 5.8789-13.199 13.199 0 7.3203 5.8789 13.199 13.199 13.199 4.6797 0 9.1211 1.6797 12.48 4.5586-5.8789 8.6406-15.598 13.922-26.156 13.922-17.879 0-32.277-14.398-32.277-32.16 0-17.879 14.398-32.281 32.277-32.281 3.3594 0 6-0.24219 7.9219-0.71875h0.35938c1.3203-0.12109 2.5195-0.35938 3.5977-0.83984 4.918-1.8008 8.3984-6.6016 8.3984-12.242v-78.359c0-10.801 8.7617-19.559 19.68-19.559 10.801 0 19.68 8.7578 19.68 19.559v98.641c0 7.3203 5.8789 13.199 13.199 13.199 7.1992 0 13.199-5.8789 13.199-13.199v-5.8789c14.883 2.8789 26.164 15.961 26.164 31.68zm78.84-42c0 3.6016-2.8789 6.6016-6.4805 6.6016-3.6016 0-6.4805-3-6.4805-6.6016v-23.281c0-7.1992-6-13.199-13.199-13.199-7.3203 0-13.199-5.8789-13.199-13.078s-5.8789-13.199-13.199-13.199h-52.441v-19.68c0-25.32-20.762-45.961-46.082-45.961-25.441 0-46.078 20.641-46.078 45.961v19.68h-65.641c-29.039 0-52.559-23.52-52.559-52.441 0-19.078 10.32-36.238 26.16-45.48v25.68c0 18.121 14.762 33 32.879 33 18.238 0 33-14.879 33-33v-6.4805h6.4805c15.84 0 29.16-11.281 32.281-26.281h132c29.039 0 52.559 23.52 52.559 52.559zm0-173.88c-13.922-12.602-32.281-20.277-52.559-20.277l-144.6-0.003906c-7.1992 0-13.199 5.8789-13.199 13.199v6.6016c0 3.4805-2.8789 6.4805-6.4805 6.4805h-19.68c-7.3203 0-13.199 5.8789-13.199 13.199v19.68c0 3.6016-3 6.6016-6.6016 6.6016s-6.4805-3-6.4805-6.6016v-44.641c0-3.9609-1.8008-7.6797-4.8008-10.199-3.1211-2.5195-7.1992-3.4805-11.039-2.7617-14.039 2.8789-26.641 9.3594-36.719 18.602v-77.398c17.16 7.0781 36 11.039 55.68 11.039h204c19.68 0 38.52-3.9609 55.68-11.039zm63.121-211.68c0 33.719-14.039 64.199-36.719 85.801-7.8008 7.5586-16.684 13.918-26.402 19.078-16.559 8.8789-35.52 13.918-55.68 13.918h-204c-20.16 0-39.121-5.0391-55.68-13.918-9.7188-5.1602-18.602-11.52-26.402-19.082-22.68-21.602-36.719-52.078-36.719-85.801v-100.44c0-17.281 5.6406-33.242 15.242-46.199 5.5195-7.6797 12.602-14.398 20.641-19.559 12.238-8.0391 26.879-12.602 42.48-12.602h167.76c-0.71875 14.281-4.918 27.719-11.758 39.359-7.082 12.238-17.281 22.559-29.52 30-12.844 7.8047-27.961 12.242-44.043 12.242h-66c-7.3203 0-13.199 5.8789-13.199 13.199v36c0 7.1992 5.8789 13.199 13.199 13.199h18.602c35.398 0 64.199 28.801 64.199 64.199 0 7.3203 5.8789 13.199 13.199 13.199s13.199-5.8789 13.199-13.199c0-50.039-40.68-90.602-90.602-90.602h-5.3984v-9.6016l52.801 0.007813c38.039 0 71.758-19.078 92.039-48.242 10.68 7.6797 23.641 12.242 37.801 12.242h4.3203c35.641 0 64.68-28.801 65.039-64.32v-0.12109c0.12109-0.96094 0.24219-1.8008 0.24219-2.7578v-225.48c0-22.441 18.242-40.559 40.559-40.559 22.32 0 40.559 18.121 40.559 40.559v225.48c0 0.96094 0.12109 1.8008 0.24219 2.7578z"
+            />
+            <path
+              d="m712.8 308.16v128.88c-0.12109-0.96094-0.24219-1.8008-0.24219-2.7578v-130.08c0.12109 1.3203 0.24219 2.6406 0.24219 3.9609z"
+            />
+          </svg>
+        </div>
+        <div class="colophon-meta">
+          <span class="edition-line">Edition v4.2.1 &bull; Typeset in Cormorant &amp; Geist</span>
+          <span class="printed-line">Printed and compiled on the Atlantic Coast of New Jersey</span>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const elements = document.querySelectorAll(
+          ".header-meta, .main-title, .floret, .description, .index-row, .colophon",
+        );
+        elements.forEach((el, i) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(12px)";
+          el.style.transition = "opacity 0.6s ease " + i * 0.08 + "s, transform 0.6s ease " + i * 0.08 + "s";
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              el.style.opacity = "";
+              el.style.transform = "";
+            });
+          });
+        });
+      });
+      function updateDots() {
+        document.querySelectorAll(".row-dots").forEach((dotEl) => {
+          const width = dotEl.offsetWidth;
+          if (width > 0) {
+            dotEl.textContent = ".".repeat(Math.max(Math.floor(width / 4.5), 3));
+          }
+        });
+      }
+      window.addEventListener("load", updateDots);
+      window.addEventListener("resize", updateDots);
+    </script>
+  </body>
+</html>
