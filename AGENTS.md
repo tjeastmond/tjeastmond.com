@@ -1,6 +1,6 @@
 # Agent notes — tjeastmond.com
 
-Personal single-page site (**Vite** + React). No API routes, no database, no auth. Editable copy and layout are in `src/App.tsx` and `src/components/`.
+Personal single-page site (**Vite** + React). No API routes, no database, no auth. Editable copy and layout are in `src/App.tsx` and `src/components/novel/`.
 
 ## Agent workflow
 
@@ -31,14 +31,14 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 
 - **Vite** 6, **React** 19, **TypeScript** 5.5 (strict)
 - **Vercel**: `@vercel/analytics`, `@vercel/speed-insights` in `src/App.tsx`; root `vercel.json` for `dist` output
-- Styling: global CSS in `src/css/global.css` (includes reset); **Roboto Mono** self-hosted from `public/fonts/roboto-mono/`
-- **Social icons**: custom inline SVGs in `SiteIcons.tsx`, wired through `socialLinkData.ts` → `SocialLinks.tsx` → `SocialRow.tsx`
+- Styling: global CSS in `src/css/global.css` (includes reset); **Cormorant Garamond** and **Geist Mono** self-hosted from `public/fonts/cormorant-garamond/` and `public/fonts/geist-mono/`
+- **Novel layout**: components in `src/components/novel/` — `NovelPage`, index table, colophon; index row data in `indexData.ts`
 
 ## Layout
 
 - `index.html` — shell, head meta, `#root` entry
 - `src/main.tsx` → `src/App.tsx` — page content, Vercel widgets
-- `src/components/` — UI pieces; archived scramble effect under `src/archived/scrambler-effect/`
+- `src/components/novel/` — novel theme UI; pre-novel dark theme backed up under `src/archived/pre-novel-theme/`
 - `public/` — static assets, favicons, `images/icons/`, self-hosted fonts
 
 **Path aliases** (see `tsconfig.json`): `@components/*`, `@styles/*` — prefer these over deep relatives.
@@ -50,15 +50,18 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 
 ## Learned User Preferences
 
-- Dark theme only; no theme toggle in the UI.
-- Social row: first icon flush with body text left edge; uniform spacing between icons; `cursor: pointer` on the icons, with the zoom/color effect on hover and keyboard focus (`:hover`/`:focus-visible`).
+- Light folio/catalog theme from `novel.html`; no theme toggle in the UI.
+- Self-host all fonts locally (no Google Fonts network requests).
+- Novel landing layout: centered `.content` only — no `.page` double-border frame wrapper.
+- When porting reference HTML to React, exclude page-load stagger animations; keep hover effects and dynamic behaviors (e.g. dot leaders).
 - When implementing attached plans, do not edit the plan file.
 - Include the `.cursor` directory in commits when adding Cursor hooks or config.
 
 ## Learned Workspace Facts
 
-- Minimal single-page header: site name only (no logo-mark, subtitle, or home link).
-- Social links (inventory, order, hrefs, labels) live in `socialLinkData.ts` — the canonical source; e.g. X is labeled `x.com`.
-- Page layout follows Swoo.io patterns: animated underline on body links; desktop social row shows attribution labels on hover.
-- Layout constants (content/body max-widths, top padding) live in `src/css/global.css` — the canonical source; content is not vertically centered.
+- Landing page components live in `src/components/novel/` (NovelPage, IndexTable, indexData, etc.).
+- Previous dark-theme components backed up in `src/archived/pre-novel-theme/`.
+- Fonts: Cormorant Garamond + Geist Mono self-hosted from `public/fonts/cormorant-garamond/` and `public/fonts/geist-mono/`.
+- `novel.html` at repo root is the authoritative design reference for the landing page.
+- Light palette and layout constants live in `src/css/global.css` (`--bg: #f5f2eb`, `--ink: #1e1c19`, `--accent: #964b34`); body flex-centers `.content`.
 - `.cursor/hooks/state/continual-learning.json` is gitignored (local continual-learning hook state).
