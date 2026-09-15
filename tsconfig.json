@@ -1,4 +1,5 @@
 {
+  "include": ["app", "src", "vite.config.ts", "react-router.config.ts", ".react-router/types/**/*"],
   "compilerOptions": {
     "target": "ES2022",
     "useDefineForClassFields": true,
@@ -14,12 +15,13 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "rootDirs": [".", "./.react-router/types"],
+    "types": ["node", "vite/client"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@styles/*": ["src/css/*"]
     }
-  },
-  "include": ["src", "vite.config.ts"]
+  }
 }

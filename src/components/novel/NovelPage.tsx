@@ -1,15 +1,12 @@
 import Colophon from "./Colophon";
-import HeaderMeta from "./HeaderMeta";
 import IndexTable from "./IndexTable";
-import TitleBlock from "./TitleBlock";
+import NovelShell from "./NovelShell";
 
 export default function NovelPage() {
   return (
-    <div className="content">
-      <HeaderMeta />
-      <TitleBlock />
+    <NovelShell>
       <IndexTable />
       <Colophon />
-    </div>
+    </NovelShell>
   );
 }

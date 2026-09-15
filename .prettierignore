@@ -9,6 +9,7 @@ npm-debug.log
 # Ignore build directories
 dist/**
 build/**
+.react-router/**
 
 # Ignore output from Next.js
 .next/**

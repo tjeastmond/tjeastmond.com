@@ -1,6 +1,6 @@
 # Agent notes — tjeastmond.com
 
-Personal single-page site (**Vite** + React). No API routes, no database, no auth. Editable copy and layout are in `src/App.tsx` and `src/components/novel/`.
+Personal portfolio site (**React Router** v8 framework mode + **Vite** 7). Static prerender at build time; no runtime server, API routes, database, or auth. Editable copy and layout live in `app/routes/` and `src/components/novel/`.
 
 ## Agent workflow
 
@@ -12,36 +12,53 @@ The `check` script in `package.json` is:
 pnpm test && pnpm run typecheck && pnpm run lint && pnpm run format && pnpm run build
 ```
 
-That is the same as running, in order: `test` → `typecheck` → `lint` → `format` → `build`. The `format` step **rewrites** files with Prettier when they are not already formatted.
+That is the same as running, in order: `test` → `typecheck` → `lint` → `format` (write) → `build`. The `format` step **rewrites** files with Prettier when they are not already formatted.
 
 ## Commands (pnpm)
 
 | Command | Purpose |
 |--------|--------|
 | `pnpm check` | **Full validation** — `test`, `typecheck`, `lint`, `format` (write), `build` (use this; see above) |
-| `pnpm dev` | Vite dev server (port 3000) |
-| `pnpm typecheck` | `tsc --noEmit` |
+| `pnpm dev` | React Router dev server (port 3000) |
+| `pnpm typecheck` | `react-router typegen` + `tsc --noEmit` |
 | `pnpm lint` | ESLint (`eslint.config.js` — `@eslint/js`, `typescript-eslint`, `react-hooks`, `react-refresh`) |
 | `pnpm format` / `pnpm format:check` | Prettier — write or check (`.prettierrc`, 2 spaces, 120 print width) |
-| `pnpm build` | `tsc && vite build` — production bundle to `dist/` |
-| `pnpm preview` / `pnpm start` | Serve production build |
+| `pnpm build` | `react-router build` — prerendered static output to `build/client/` |
+| `pnpm preview` / `pnpm start` | Serve production build (`serve build/client`) |
 | `pnpm test` | Vitest; `*.spec.ts` / `*.test.ts` |
 
 ## Stack
 
-- **Vite** 6, **React** 19, **TypeScript** 5.5 (strict)
-- **Vercel**: `@vercel/analytics`, `@vercel/speed-insights` in `src/App.tsx`; root `vercel.json` for `dist` output
+- **React Router** 8 (framework mode, `ssr: false`), **Vite** 7, **React** 19, **TypeScript** 5.5 (strict)
+- **Static prerender**: routes listed in `PRERENDER_PATHS` (`src/components/novel/indexData.ts`) are baked to HTML at build time (`react-router.config.ts`)
+- **Vercel**: `@vercel/analytics`, `@vercel/speed-insights` in `app/root.tsx`; root `vercel.json` for `build/client` output
 - Styling: global CSS in `src/css/global.css` (includes reset); **Cormorant Garamond** and **Geist Mono** self-hosted from `public/fonts/cormorant-garamond/` and `public/fonts/geist-mono/`
-- **Novel layout**: components in `src/components/novel/` — `NovelPage`, index table, colophon; index row data in `indexData.ts`
+- **Novel layout**: components in `src/components/novel/` — `NovelPage`, `ChapterPage`, index table, colophon; index row data in `indexData.ts`
 
 ## Layout
 
-- `index.html` — shell, head meta, `#root` entry
-- `src/main.tsx` → `src/App.tsx` — page content, Vercel widgets
+- `app/root.tsx` — HTML shell, font/favicon links, Vercel widgets, global CSS
+- `app/routes.ts` — route table (`/` home, `/:chapterId` for chapter pages)
+- `app/routes/home.tsx` — table of contents (landing)
+- `app/routes/chapter.tsx` — shared chapter route with per-page `meta()`
 - `src/components/novel/` — novel theme UI; pre-novel dark theme backed up under `src/archived/pre-novel-theme/`
 - `public/` — static assets, favicons, `images/icons/`, self-hosted fonts
 
 **Path aliases** (see `tsconfig.json`): `@components/*`, `@styles/*` — prefer these over deep relatives.
+
+## Routes
+
+| Path | Entry |
+|------|-------|
+| `/` | Table of contents |
+| `/about` | I — About the Engineer (internal chapter) |
+| `/work` | II — Selected Code & Craft (internal chapter) |
+| `/writing` | III — Writings & Essays (internal chapter) |
+| GitHub (external) | IV — opens `GITHUB_PROFILE_URL` in a new tab |
+| LinkedIn (external) | V — opens `LINKEDIN_PROFILE_URL` in a new tab |
+| `/contact` | VI — Contact & Telegraphy (internal chapter) |
+
+Index rows and chapter IDs live in `src/components/novel/indexData.ts`. Internal rows drive `PRERENDER_PATHS` automatically — add a new internal row to `INDEX_ROWS` (and chapter content under `src/components/novel/chapters/` when ready); do not maintain a separate prerender list by hand. External rows are links out, not site routes.
 
 ## What not to expect
 

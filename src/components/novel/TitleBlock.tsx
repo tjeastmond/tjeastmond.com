@@ -1,6 +1,10 @@
 import FloretIcon from "./FloretIcon";
 
-export default function TitleBlock() {
+type TitleBlockProps = {
+  showDescription?: boolean;
+};
+
+export default function TitleBlock({ showDescription = true }: TitleBlockProps) {
   return (
     <div className="title-block">
       <div className="main-title">
@@ -14,10 +18,12 @@ export default function TitleBlock() {
         </span>
         <span className="floret-line" />
       </div>
-      <p className="description">
-        A personal repository and catalog of computer-aided crafts, system designs, and various digital artifacts
-        produced at the intersection of engineering and visual style.
-      </p>
+      {showDescription ? (
+        <p className="description">
+          A personal repository and catalog of computer-aided crafts, system designs, and various digital artifacts
+          produced at the intersection of engineering and visual style.
+        </p>
+      ) : null}
     </div>
   );
 }
