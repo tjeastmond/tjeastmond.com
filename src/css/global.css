@@ -554,8 +554,31 @@ button * {
     display: none;
   }
 
+  /* Panels cover most of a phone screen, so lighter glass lets the jellyfish show through; the halo keeps text legible. */
   .shade {
-    background: linear-gradient(180deg, rgba(4, 6, 10, 0.55) 0%, rgba(4, 6, 10, 0.8) 60%, rgba(4, 6, 10, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(4, 6, 10, 0.2) 0%, rgba(4, 6, 10, 0.4) 60%, rgba(4, 6, 10, 0.55) 100%);
+  }
+
+  .pill {
+    background: rgba(11, 15, 22, 0.45);
+  }
+
+  /* No blur here: even a few pixels smear the ASCII glyphs into a smudge at this size. */
+  .hero-panel {
+    background: rgba(4, 6, 10, 0.4);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .focus-card {
+    background: rgba(11, 15, 22, 0.5);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .hero-panel,
+  .focus-card {
+    text-shadow: var(--text-halo);
   }
 }
 
