@@ -1,3 +1,4 @@
+import { scrollToTop } from "../hooks/scrollToTop";
 import { IconPause, IconPlay } from "./SiteIcons";
 
 type SiteHeaderProps = {
@@ -8,7 +9,7 @@ type SiteHeaderProps = {
 export default function SiteHeader({ motionPlaying, onToggleMotion }: SiteHeaderProps) {
   return (
     <header className="site-header">
-      <a href="#top" className="brand">
+      <a href="#top" onClick={scrollToTop} className="brand">
         <span aria-hidden="true" className="brand-prompt">
           ~/
         </span>
