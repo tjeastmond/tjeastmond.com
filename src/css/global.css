@@ -322,6 +322,21 @@ button * {
   letter-spacing: 0.04em;
   color: var(--color-fg-subtle);
   text-shadow: var(--text-halo);
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+}
+
+/* Feathered backing in the page color: the jellyfish glyphs share this label's mono grid and land
+   between its letters, where a text-shadow can't reach, so the halo alone lets it dissolve. */
+.section-label::before {
+  content: "";
+  position: absolute;
+  inset: -10px -16px;
+  z-index: -1;
+  border-radius: 999px;
+  background: var(--color-bg);
+  filter: blur(8px);
 }
 
 .section-label--inline {

@@ -56,7 +56,7 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 
 - Dark theme only; no theme toggle in the UI.
 - The site follows the design canvas exactly (https://claude.ai/code/artifact/e79f6248-1724-4a0f-b669-881cb8334f92); don't change the look when refactoring.
-- Approved departures from the canvas (keep these): X pill uses the filled X logo labeled `X.com`; Steam uses the classic-theme icon; header Writing/Contact links sit in a glass pill; text outside glass panels gets the `--text-halo` glow; the footer has a full-bleed fade to the background color (`.site-footer::before`) so jellyfish don't wash out its text.
+- Approved departures from the canvas (keep these): X pill uses the filled X logo labeled `X.com`; Steam uses the classic-theme icon; header Writing/Contact links sit in a glass pill; text outside glass panels gets the `--text-halo` glow; the footer has a full-bleed fade to the background color (`.site-footer::before`) so jellyfish don't wash out its text; section labels (e.g. "What I work on") sit on a feathered page-color backing (`.section-label::before`) because the halo alone can't keep small mono text legible over the jellyfish glyphs.
 - Don't modify `createOcean.js` unless explicitly asked; answer questions about the jellyfish by reading it.
 - The jellyfish animation respects `prefers-reduced-motion` and has a pause/play toggle in the header.
 - When implementing attached plans, do not edit the plan file.
