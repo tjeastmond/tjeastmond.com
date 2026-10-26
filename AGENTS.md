@@ -31,7 +31,7 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 
 ## Stack
 
-- **Vite** 6, **React** 19, **TypeScript** 5.5 (strict)
+- **Vite** 8, **React** 19, **TypeScript** 7 (strict) — `tsc` is the native TS 7 compiler (`@typescript/native`); the `typescript` package is aliased to `@typescript/typescript6` so typescript-eslint keeps a supported compiler API. Tests: **Vitest** 5 + **jsdom** 30
 - **Vercel**: `@vercel/analytics`, `@vercel/speed-insights` in `src/App.tsx`; root `vercel.json` for `dist` output
 - Styling: global CSS in `src/css/global.css` (color/font tokens on `:root`); **Geist** and **Geist Mono** variable fonts self-hosted from `public/fonts/geist/` and preloaded in `index.html` (license in `src/fonts/geist/`)
 - **Social icons**: stroke-style inline SVGs in `SiteIcons.tsx`, wired through `socialLinkData.ts` → `SocialPills.tsx` (hero pill row)
