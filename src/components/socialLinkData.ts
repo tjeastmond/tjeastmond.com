@@ -19,10 +19,10 @@ export const LINKEDIN_LINK: SocialLink = {
 export const SOCIAL_LINKS: SocialLink[] = [
   { href: "https://github.com/tjeastmond", label: "GitHub", Icon: IconGithub },
   LINKEDIN_LINK,
-  { href: "https://x.com/tjeastmond_", label: "x.com", Icon: IconX },
+  { href: "https://x.com/tjeastmond_", label: "X.com", Icon: IconX },
   // { href: "https://bsky.app/profile/tjeastmond.bsky.social", label: "Bluesky", Icon: IconBluesky },
   { href: "https://steamcommunity.com/id/spiteshow", label: "Steam", Icon: IconSteam },
-  { href: "https://swoo.io", label: "swoo.io", Icon: IconGlobe },
+  { href: "https://swoo.io", label: "Swoo.io", Icon: IconGlobe },
 ];
 
 /** Hero pill row: every social link, then email. */

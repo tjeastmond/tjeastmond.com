@@ -56,7 +56,7 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 
 - Dark theme only; no theme toggle in the UI.
 - The site follows the design canvas exactly (https://claude.ai/code/artifact/e79f6248-1724-4a0f-b669-881cb8334f92); don't change the look when refactoring.
-- Approved departures from the canvas (keep these): X pill uses the filled X logo labeled `x.com`; Steam uses the classic-theme icon; header Writing/Contact links sit in a glass pill; text outside glass panels gets the `--text-halo` glow; the footer has a full-bleed fade to the background color (`.site-footer::before`) so jellyfish don't wash out its text.
+- Approved departures from the canvas (keep these): X pill uses the filled X logo labeled `X.com`; Steam uses the classic-theme icon; header Writing/Contact links sit in a glass pill; text outside glass panels gets the `--text-halo` glow; the footer has a full-bleed fade to the background color (`.site-footer::before`) so jellyfish don't wash out its text.
 - Don't modify `createOcean.js` unless explicitly asked; answer questions about the jellyfish by reading it.
 - The jellyfish animation respects `prefers-reduced-motion` and has a pause/play toggle in the header.
 - When implementing attached plans, do not edit the plan file.
@@ -65,7 +65,7 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 ## Learned Workspace Facts
 
 - Header: `~/tjeastmond` brand, Writing/Contact anchor links (hidden under 640px), and the jellyfish pause/play pill.
-- Social links (inventory, order, hrefs, labels) live in `socialLinkData.ts` — the canonical source; e.g. X is labeled `x.com` and uses the filled X logo. Email and LinkedIn are exported separately for the contact buttons.
+- Social links (inventory, order, hrefs, labels) live in `socialLinkData.ts` — the canonical source; e.g. X is labeled `X.com` and uses the filled X logo. Email and LinkedIn are exported separately for the contact buttons.
 - Writing is hidden for now: `<WritingSection />` (App.tsx) and the header's Writing link (SiteHeader.tsx) are commented out, not deleted. Uncomment both to show it; placeholder posts are in `POSTS` in `WritingSection.tsx`.
 - Layout constants (container max-width, section padding) live in `src/css/global.css` — the canonical source.
 - `.cursor/hooks/state/continual-learning.json` is gitignored (local continual-learning hook state).
