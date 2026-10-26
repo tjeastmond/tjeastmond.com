@@ -4,7 +4,9 @@ Personal single-page site (**Vite** + React). No API routes, no database, no aut
 
 ## Agent workflow
 
-**Before finishing a change (or in CI): always run `pnpm check`.** If any step fails, stop and fix the issues before you consider the task done.
+**After each change:** run `pnpm typecheck`, `pnpm lint`, and `pnpm format`. Fix anything they report.
+
+**Before every commit (or in CI): run `pnpm check`.** If any step fails, fix it and run `pnpm check` again; commit only once it passes. Don't run the full check after every change — it slows iteration down.
 
 The `check` script in `package.json` is:
 
@@ -31,14 +33,16 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 
 - **Vite** 6, **React** 19, **TypeScript** 5.5 (strict)
 - **Vercel**: `@vercel/analytics`, `@vercel/speed-insights` in `src/App.tsx`; root `vercel.json` for `dist` output
-- Styling: global CSS in `src/css/global.css` (includes reset); **Roboto Mono** self-hosted from `public/fonts/roboto-mono/`
-- **Social icons**: custom inline SVGs in `SiteIcons.tsx`, wired through `socialLinkData.ts` → `SocialLinks.tsx` → `SocialRow.tsx`
+- Styling: global CSS in `src/css/global.css` (color/font tokens on `:root`); **Geist** and **Geist Mono** variable fonts self-hosted from `public/fonts/geist/` and preloaded in `index.html` (license in `src/fonts/geist/`)
+- **Social icons**: stroke-style inline SVGs in `SiteIcons.tsx`, wired through `socialLinkData.ts` → `SocialPills.tsx` (hero pill row)
+- **Jellyfish ocean**: animated ASCII canvas background in `src/components/ocean/createOcean.js`, kept verbatim from the design canvas (plain JS + `createOcean.d.ts`, excluded from Prettier). Mounted by `src/hooks/useOcean.ts`; `App.tsx` feeds it pointer position and drives the custom cursor
 
 ## Layout
 
 - `index.html` — shell, head meta, `#root` entry
-- `src/main.tsx` → `src/App.tsx` — page content, Vercel widgets
-- `src/components/` — UI pieces; archived scramble effect under `src/archived/scrambler-effect/`
+- `src/main.tsx` → `src/App.tsx` — page shell (ocean, cursor, motion state), Vercel widgets
+- `src/components/` — `SiteHeader`, `Hero`, `FocusSection`, `WritingSection`, `ContactSection`, `SiteFooter`
+- `src/archived/` — `scrambler-effect/` and `classic-theme/` (the pre-redesign Roboto Mono site, self-contained)
 - `public/` — static assets, favicons, `images/icons/`, self-hosted fonts
 
 **Path aliases** (see `tsconfig.json`): `@components/*`, `@styles/*` — prefer these over deep relatives.
@@ -51,14 +55,17 @@ That is the same as running, in order: `test` → `typecheck` → `lint` → `fo
 ## Learned User Preferences
 
 - Dark theme only; no theme toggle in the UI.
-- Social row: first icon flush with body text left edge; uniform spacing between icons; `cursor: pointer` on the icons, with the zoom/color effect on hover and keyboard focus (`:hover`/`:focus-visible`).
+- The site follows the design canvas exactly (https://claude.ai/code/artifact/e79f6248-1724-4a0f-b669-881cb8334f92); don't change the look when refactoring.
+- Approved departures from the canvas (keep these): X pill uses the filled X logo labeled `x.com`; Steam uses the classic-theme icon; header Writing/Contact links sit in a glass pill; text outside glass panels gets the `--text-halo` glow; the footer has a full-bleed fade to the background color (`.site-footer::before`) so jellyfish don't wash out its text.
+- Don't modify `createOcean.js` unless explicitly asked; answer questions about the jellyfish by reading it.
+- The jellyfish animation respects `prefers-reduced-motion` and has a pause/play toggle in the header.
 - When implementing attached plans, do not edit the plan file.
 - Include the `.cursor` directory in commits when adding Cursor hooks or config.
 
 ## Learned Workspace Facts
 
-- Minimal single-page header: site name only (no logo-mark, subtitle, or home link).
-- Social links (inventory, order, hrefs, labels) live in `socialLinkData.ts` — the canonical source; e.g. X is labeled `x.com`.
-- Page layout follows Swoo.io patterns: animated underline on body links; desktop social row shows attribution labels on hover.
-- Layout constants (content/body max-widths, top padding) live in `src/css/global.css` — the canonical source; content is not vertically centered.
+- Header: `~/tjeastmond` brand, Writing/Contact anchor links (hidden under 640px), and the jellyfish pause/play pill.
+- Social links (inventory, order, hrefs, labels) live in `socialLinkData.ts` — the canonical source; e.g. X is labeled `x.com` and uses the filled X logo. Email and LinkedIn are exported separately for the contact buttons.
+- Writing is hidden for now: `<WritingSection />` (App.tsx) and the header's Writing link (SiteHeader.tsx) are commented out, not deleted. Uncomment both to show it; placeholder posts are in `POSTS` in `WritingSection.tsx`.
+- Layout constants (container max-width, section padding) live in `src/css/global.css` — the canonical source.
 - `.cursor/hooks/state/continual-learning.json` is gitignored (local continual-learning hook state).

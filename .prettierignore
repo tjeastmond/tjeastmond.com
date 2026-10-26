@@ -58,3 +58,6 @@ my-custom-config.js
 *.gif
 *.mp4
 *.svg
+
+# Jellyfish ocean is kept verbatim from the design canvas
+src/components/ocean/createOcean.js
